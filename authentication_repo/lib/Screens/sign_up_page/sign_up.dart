@@ -1,5 +1,3 @@
-import 'package:authentication_repo/controllers/sign_up_controller.dart';
-import 'package:get/get.dart';
 import '../../config.dart';
 import 'layout/sign_up_layout.dart';
 

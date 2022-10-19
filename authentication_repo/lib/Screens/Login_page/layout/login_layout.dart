@@ -48,9 +48,23 @@ class LoginLayout extends StatelessWidget {
                     },)
                   ]
               ),
-              ButtonCommon(title: appFonts.signIn,onTap: () {
+              ButtonCommon(title: appFonts.signIn,onTap: () async{
                 if (signInCtrl.signInGlobalKey.currentState!.validate()) {
-                  log("DONE");
+                  try {
+                    await FirebaseAuth.instance.signInWithEmailAndPassword(
+                        email: signInCtrl.emailController.text.toString(),
+                        password: signInCtrl.passwordController.text.toString()
+                    );
+                    Get.toNamed(routeName.homeScreen);
+                  } on FirebaseAuthException catch (e) {
+                    if (e.code == 'wrong-password') {
+                      log(e.toString());
+                    } else if (e.code == 'user-not-found') {
+                      log(e.toString());
+                    }
+                  }catch (e) {
+                    log(e.toString());
+                  }
                 }
               },)
             ],

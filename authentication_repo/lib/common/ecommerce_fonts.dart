@@ -6,14 +6,24 @@ class AppFonts {
     final enterUserName = "Enter username here";
     final email = "Email";
     final password = "Password";
-    final number = "Number";
+    final number = "Phone Number";
     final enterEmail = "Enter email here";
     final enterPassword = "Enter password here";
-    final enterNumber = "Enter number here";
+    final enterNumber = "Enter phone number here";
     final enterValidNumber = "Enter valid number";
+    final pleaseEnterNumber = "Please enter phone number";
     final pleaseEnterPassword = "Please enter password ";
     final passwordMustBe = "Password must be 8 character";
     final pleaseEnterUsername = "Please enter username ";
     final pleaseEnterEmail = "Please enter email ";
     final pleaseEnterValid = "Please enter valid email ";
+    final forgotPass = "Forgot Password ?";
+    final fetchOtp = "Send Otp";
+    final continueTo = "Continue";
+    final authentication = "Firebase Authentication Successfully";
+    final loginWithFb = "Login With Facebook";
+    final logout = "Logout";
+    final invalidCode = "Invalid Code";
+    final pleaseEnterValue = "Please Enter Value";
+    final enterValidCode = "Enter Valid Code";
 }

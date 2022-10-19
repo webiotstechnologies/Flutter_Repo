@@ -1,3 +1,4 @@
+import 'dart:developer';
 import '../../../config.dart';
 
 class SignUpLayout extends StatelessWidget {
@@ -60,32 +61,17 @@ class SignUpLayout extends StatelessWidget {
                     return null;
                   },
                 ),
-                const VSpace(Sizes.s40),
-                Text(appFonts.number,
-                    style: AppCss.montserratSemiBold16
-                        .textColor(appCtrl.appTheme.blackColor)),
-                TextFieldCommon(
-                  keyboardType: TextInputType.number,
-                  maxLength: 10,
-                  hintText: appFonts.enterNumber,
-                  controller: signUpCtrl.numberController,
-                  validator: (password) {
-                    if (password.isEmpty) {
-                      return appFonts.enterValidNumber;
-                    }
-                    if (password.length < 10) {
-                      return appFonts.enterValidNumber;
-                    }
-                    return null;
-                  },
-                ),
+                const VSpace(Sizes.s10),
+                Text(appFonts.forgotPass,
+                        style: AppCss.montserratMedium16
+                            .textColor(appCtrl.appTheme.indigo))
+                    .inkWell(onTap: () => Get.toNamed(routeName.numberScreen))
               ]),
               ButtonCommon(
                 title: appFonts.signUp,
                 onTap: () async {
                   if (signUpCtrl.signUpGlobalKey.currentState!.validate()) {
-                    Get.toNamed(routeName.otpScreen);
-                    /*try {
+                    try {
                       await FirebaseAuth.instance
                           .createUserWithEmailAndPassword(
                               email: signUpCtrl.emailController.text.toString(),
@@ -104,23 +90,27 @@ class SignUpLayout extends StatelessWidget {
                       }
                     } catch (e) {
                       log("What Ever");
-                    }*/
+                    }
                   }
                 },
               ),
+              const VSpace(Sizes.s20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Image.asset(eImageAssets.google, scale: 15).inkWell(
+                  Image.asset(eImageAssets.google, scale: 12).inkWell(
                       onTap: () async {
                     await signInWithGoogle();
-                    Get.toNamed(routeName.signInScreen);
+                    Get.toNamed(routeName.homeScreen);
                     signUpCtrl.update();
                   }),
-                  Image.asset(eImageAssets.facebook, scale: 15),
-                  Image.asset(eImageAssets.twitter, scale: 15),
+                  Image.asset(eImageAssets.facebook, scale: 12).inkWell(onTap: () => Get.toNamed(routeName.facebookScreen)),
+                  Image.asset(eImageAssets.spyware,scale: 12).inkWell(
+                      onTap: () async {
+                       await signUpCtrl.auth.signInAnonymous();
+                      }),
                 ],
-              ).paddingOnly(top: Insets.i50)
+              ).paddingOnly(top: Insets.i30)
             ],
           ),
         ),
