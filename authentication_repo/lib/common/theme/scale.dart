@@ -82,6 +82,7 @@ class Sizes {
   static const double scale = 1;
 
   static const double s2 = 2 * scale;
+  static const double s3 = 3 * scale;
   static const double s5 = 5 * scale;
   static const double s7 = 7 * scale;
   static const double s8 = 8 * scale;
@@ -106,6 +107,7 @@ class Sizes {
   static const double s45 = 45 * scale;
   static const double s50 = 50 * scale;
   static const double s55 = 55 * scale;
+  static const double s56 = 56 * scale;
   static const double s60 = 60 * scale;
   static const double s62 = 62 * scale;
   static const double s65 = 65 * scale;

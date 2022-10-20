@@ -3,13 +3,13 @@ class AppFonts {
     final signUp = "Sign Up";
     final signIn = "Sign In";
     final userName = "Username";
-    final enterUserName = "Enter username here";
+    final enterUserName = "Enter username";
     final email = "Email";
     final password = "Password";
     final number = "Phone Number";
-    final enterEmail = "Enter email here";
-    final enterPassword = "Enter password here";
-    final enterNumber = "Enter phone number here";
+    final enterEmail = "Enter email";
+    final enterPassword = "Enter password";
+    final enterNumber = "Enter phone number";
     final enterValidNumber = "Enter valid number";
     final pleaseEnterNumber = "Please enter phone number";
     final pleaseEnterPassword = "Please enter password ";
@@ -18,7 +18,7 @@ class AppFonts {
     final pleaseEnterEmail = "Please enter email ";
     final pleaseEnterValid = "Please enter valid email ";
     final forgotPass = "Forgot Password ?";
-    final fetchOtp = "Send Otp";
+    final sendOtp = "Send Otp";
     final continueTo = "Continue";
     final authentication = "Firebase Authentication Successfully";
     final loginWithFb = "Login With Facebook";
@@ -26,4 +26,16 @@ class AppFonts {
     final invalidCode = "Invalid Code";
     final pleaseEnterValue = "Please Enter Value";
     final enterValidCode = "Enter Valid Code";
+    final haveAnAccount = "Have An Account ? ";
+    final dontHaveAnAccount = "If You Don't Have An Account ? ";
+    final loading = "Loading...";
+    final userNotFound = "User Not Found!";
+    final wrongPassword = "Wrong Password";
+    final unknownError = "Unknown Error";
+    final anonymousNotEnabled = "Anonymous auth hasn't been enabled for this project";
+    final somethingWentWrong = "Something Went Wrong";
+    final emailAlreadyUse = "Email Already In Use";
+    final signOut = "Google Sign Out";
+    final signOutSuccess = "Sign Out Successfully";
+    final firebaseSignOut = "Firebase Sign Out";
 }

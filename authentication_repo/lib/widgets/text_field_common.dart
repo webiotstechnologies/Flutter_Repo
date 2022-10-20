@@ -13,12 +13,13 @@ class TextFieldCommon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // TextField Common
     return TextFormField(keyboardType: keyboardType,
       maxLength: maxLength,
       validator: validator,
       controller: controller,
       decoration: InputDecoration(hintText: hintText
-        ),
+        )
     );
   }
 }

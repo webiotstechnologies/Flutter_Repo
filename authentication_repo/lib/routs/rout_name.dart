@@ -1,5 +1,5 @@
 class RouteName {
-  final String loginScreen = "/loginScreen";
+  final String signUpScreen = "/signUpScreen";
   final String signInScreen = "/signInScreen";
   final String otpScreen = "/otpScreen";
   final String numberScreen = "/numberScreen";

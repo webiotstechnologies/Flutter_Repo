@@ -14,13 +14,10 @@ class AppController extends GetxController {
   int currVal = 1;
   String priceSymbol = "\$";
 
-
-
   //update theme
   updateTheme(theme) {
     _appTheme = theme;
     Get.forceAppUpdate();
   }
-
 
 }
