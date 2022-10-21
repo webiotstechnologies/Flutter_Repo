@@ -24,12 +24,7 @@ class SignUpFieldsCommon extends StatelessWidget {
         const VSpace(Sizes.s40),
         // Password Text
         PasswordCommon(passController: signUpCtrl.passwordController),
-        const VSpace(Sizes.s10),
-        // Forgot Password Text
-        Text(appFonts.forgotPass,
-                style: AppCss.montserratMedium16
-                    .textColor(appCtrl.appTheme.indigo))
-            .inkWell(onTap: () => Get.toNamed(routeName.numberScreen))
+
       ]);
     });
   }

@@ -10,7 +10,7 @@ class SignInScreen extends StatelessWidget {
     return GetBuilder<SignInController>(builder: (_) {
       return Scaffold(
           backgroundColor: appCtrl.appTheme.indigo,
-          body: signInCtrl.isLoading ? const AlertDialogBox() :Column(children: [
+          body: signInCtrl.isLoading ? const AlertDialogBox() : Column(children: [
             // Sign In & Welcome Layout
             ExpandedTopCommon(title: appFonts.signIn),
             ExpandedBottomCommon(

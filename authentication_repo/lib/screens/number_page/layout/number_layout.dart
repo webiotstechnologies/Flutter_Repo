@@ -5,10 +5,10 @@ class NumberLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<SignUpController>(builder: (signUpCtrl) {
+    return GetBuilder<SignInController>(builder: (signInCtrl) {
       return Form(
-          key: signUpCtrl.numberGlobalKey,
-          child: signUpCtrl.isLoading
+          key: signInCtrl.numberGlobalKey,
+          child: signInCtrl.isLoading
               ? const AlertDialogBox()
               : Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   // Enter Number Text
@@ -20,13 +20,13 @@ class NumberLayout extends StatelessWidget {
                       keyboardType: TextInputType.number,
                       maxLength: 10,
                       hintText: appFonts.enterNumber,
-                      controller: signUpCtrl.numberController,
+                      controller: signInCtrl.numberController,
                       validator: (number) =>
                           Validation().numberValidation(number)),
                   // Send Otp Button
                   ButtonCommon(
                           title: appFonts.sendOtp,
-                          onTap: () => signUpCtrl.numberMethod())
+                          onTap: () => signInCtrl.numberMethod())
                       .paddingOnly(left: Insets.i35)
                 ]).paddingOnly(
                   top: Insets.i80, left: Insets.i20, right: Insets.i20));

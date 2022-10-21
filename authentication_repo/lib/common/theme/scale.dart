@@ -38,11 +38,21 @@ class Insets {
   static const double i30 = 30 * scale;
   static const double i35 = 35 * scale;
   static const double i50 = 50 * scale;
+  static const double i60 = 60 * scale;
+  static const double i65 = 65 * scale;
   static const double i70 = 70 * scale;
   static const double i80 = 80 * scale;
   static const double i90 = 90 * scale;
   static const double i100 = 100 * scale;
   static const double i150 = 150 * scale;
+  static const double i160 = 160 * scale;
+  static const double i170 = 170 * scale;
+  static const double i180 = 180 * scale;
+  static const double i182 = 182 * scale;
+  static const double i183 = 183 * scale;
+  static const double i184 = 184 * scale;
+  static const double i185 = 185 * scale;
+  static const double i190 = 190 * scale;
 }
 
 class AppRadius{

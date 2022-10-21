@@ -37,7 +37,6 @@ export '../../widgets/alert_dialog_common.dart';
 export 'package:authentication_repo/screens/otp_screen/layout/otp_layout.dart';
 export '../widgets/messenger_common.dart';
 export 'package:authentication_repo/screens/sign_up_page/layout/sign_up_fields_common.dart';
-export 'package:authentication_repo/screens/facebook_login_page/layout/fb_login_layout.dart';
 export 'package:authentication_repo/screens/number_page/layout/number_layout.dart';
 export 'package:pinput/pinput.dart';
 export 'package:authentication_repo/screens/otp_screen/layout/otp_field_common.dart';
@@ -49,6 +48,8 @@ export 'package:authentication_repo/widgets/email_common_fields.dart';
 export 'package:authentication_repo/widgets/password_field_common.dart';
 export 'package:authentication_repo/validation_form/text_field_validation_common.dart';
 export '../../../widgets/text_common.dart';
+export '../../../widgets/image_common.dart';
+export 'package:authentication_repo/controllers/user_data_controller.dart';
 
 final appCtrl = Get.isRegistered<AppController>()
     ? Get.find<AppController>()

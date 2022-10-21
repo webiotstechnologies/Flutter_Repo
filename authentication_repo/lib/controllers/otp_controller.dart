@@ -28,7 +28,7 @@ class OtpController extends GetxController {
             verificationId: data[1], smsCode: otpController.text.toString());
         await auth.signInWithCredential(credential);
         onLoadingFalse();
-        Get.toNamed(routeName.homeScreen);
+        Get.offAllNamed(routeName.facebookScreen,arguments: data[2]);
       } catch (e) {
         onLoadingFalse();
         snackBarMessengers(message: appFonts.invalidCode);

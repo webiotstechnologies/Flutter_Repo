@@ -10,7 +10,7 @@ class SignUpScreen extends StatelessWidget {
     return GetBuilder<SignUpController>(builder: (_) {
       return Scaffold(
           backgroundColor: appCtrl.appTheme.indigo,
-          body: Column(children: [
+          body: signUpCtrl.isLoading ? const AlertDialogBox() : Column(children: [
             // Sign Up & Welcome Layout
             ExpandedTopCommon(title: appFonts.signUp),
             // SignUp Bottom Layout

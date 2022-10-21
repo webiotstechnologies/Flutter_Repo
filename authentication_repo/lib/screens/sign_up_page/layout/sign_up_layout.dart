@@ -1,5 +1,4 @@
 import '../../../config.dart';
-import '../../../widgets/image_common.dart';
 
 class SignUpLayout extends StatelessWidget {
   const SignUpLayout({Key? key}) : super(key: key);
@@ -10,9 +9,7 @@ class SignUpLayout extends StatelessWidget {
       return Form(
           key: signUpCtrl.signUpGlobalKey,
           child: SingleChildScrollView(
-              child: signUpCtrl.isLoading
-                  ? const AlertDialogBox()
-                  : Column(children: [
+              child: Column(children: [
                       // All Text Field layout
                       const SignUpFieldsCommon(),
                       // Sign Up Button
@@ -24,24 +21,7 @@ class SignUpLayout extends StatelessWidget {
                               title: appFonts.haveAnAccount,
                               subTitle: appFonts.signIn,
                               onTap: () => Get.back())
-                          .paddingOnly(bottom: Insets.i30),
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            // Google Image
-                            ImagesCommon(
-                                image: eImageAssets.google,
-                                onTap: () => signUpCtrl.signInWithGoogle()),
-                            // Facebook Image
-                            ImagesCommon(
-                                image: eImageAssets.facebook,
-                                onTap: () =>
-                                    Get.toNamed(routeName.facebookScreen)),
-                            // Anonymous Login Image
-                            ImagesCommon(
-                                image: eImageAssets.spyware,
-                                    onTap: () => signUpCtrl.signInAnonymous()),
-                          ]).paddingSymmetric(vertical: Insets.i20)
+                          .paddingOnly(bottom: Insets.i30,left: Insets.i65),
                     ])));
     });
   }

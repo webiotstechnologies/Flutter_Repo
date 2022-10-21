@@ -8,6 +8,6 @@ class ImagesCommon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(image!, scale: 12).inkWell(onTap: onTap);
+    return Image.asset(image!, scale: 15).inkWell(onTap: onTap);
   }
 }
