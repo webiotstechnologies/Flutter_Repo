@@ -1,5 +1,3 @@
-import 'package:authentication_repo/validation_form/text_field_validation_common.dart';
-
 import '../../../config.dart';
 
 class SignUpFieldsCommon extends StatelessWidget {

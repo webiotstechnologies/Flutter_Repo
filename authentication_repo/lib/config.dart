@@ -23,7 +23,7 @@ export 'package:firebase_auth/firebase_auth.dart';
 export 'package:authentication_repo/controllers/facebook_controller.dart';
 export 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 export 'package:authentication_repo/screens/Login_page/layout/login_layout.dart';
-export 'package:authentication_repo/screens/facebook_login_page/layout/fb_logout_layout.dart';
+export 'package:authentication_repo/screens/facebook_login_page/fb_logout_layout.dart';
 export 'package:authentication_repo/controllers/otp_controller.dart';
 export '../../controllers/sign_in_controller.dart';
 export '../../widgets/expanded_common.dart';
@@ -37,12 +37,10 @@ export '../../widgets/alert_dialog_common.dart';
 export 'package:authentication_repo/screens/otp_screen/layout/otp_layout.dart';
 export '../widgets/messenger_common.dart';
 export 'package:authentication_repo/screens/sign_up_page/layout/sign_up_fields_common.dart';
-export 'package:authentication_repo/screens/number_page/layout/number_layout.dart';
 export 'package:pinput/pinput.dart';
 export 'package:authentication_repo/screens/otp_screen/layout/otp_field_common.dart';
 export 'package:authentication_repo/screens/number_page/number_screen.dart';
 export '../screens/app_pages/home_page.dart';
-export '../screens/facebook_login_page/facebook_login_screen.dart';
 export '../screens/otp_screen/otp_screen.dart';
 export 'package:authentication_repo/widgets/email_common_fields.dart';
 export 'package:authentication_repo/widgets/password_field_common.dart';
@@ -50,6 +48,15 @@ export 'package:authentication_repo/validation_form/text_field_validation_common
 export '../../../widgets/text_common.dart';
 export '../../../widgets/image_common.dart';
 export 'package:authentication_repo/controllers/user_data_controller.dart';
+export '../../../widgets/alert_dialog_back.dart';
+export 'package:authentication_repo/screens/app_pages/splash_page.dart';
+export 'package:firebase_core/firebase_core.dart';
+export 'package:get_storage/get_storage.dart';
+export '../common/theme/app_theme.dart';
+export 'package:authentication_repo/controllers/home_screen_controller.dart';
+export 'package:authentication_repo/controllers/splash_controller.dart';
+export 'package:authentication_repo/screens/reset_password_page/reset_password_screen.dart';
+export '../../controllers/reset_password_controller.dart';
 
 final appCtrl = Get.isRegistered<AppController>()
     ? Get.find<AppController>()

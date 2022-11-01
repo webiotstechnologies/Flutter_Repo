@@ -17,7 +17,7 @@ class TextCommon extends StatelessWidget {
       Text(subTitle!,
           style: AppCss.montserratMedium16
               .textColor(appCtrl.appTheme.indigo))
-          .inkWell(onTap: onTap /*() => Get.toNamed(routeName.signUpScreen)*/)
+          .inkWell(onTap: onTap)
     ]);
   }
 }

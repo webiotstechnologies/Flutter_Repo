@@ -39,6 +39,7 @@ class AppTheme {
   Color blackColor;
   Color borderGray;
   Color indigo;
+  Color lightIndigo;
 
 
 
@@ -74,6 +75,7 @@ class AppTheme {
     required this.blackColor,
     required this.borderGray,
     required this.indigo,
+    required this.lightIndigo,
 
   });
 
@@ -110,8 +112,8 @@ class AppTheme {
           whiteColor: Colors.white,
           blackColor: Colors.black,
           borderGray: Colors.grey,
-          indigo: Colors.indigo
-
+          indigo: Colors.indigo,
+          lightIndigo: Colors.indigo.shade400
 
         );
 
@@ -145,7 +147,8 @@ class AppTheme {
           whiteColor: Colors.black,
           blackColor: Colors.white,
           borderGray: Colors.grey,
-          indigo: Colors.indigo
+          indigo: Colors.indigo,
+          lightIndigo: Colors.indigo.shade400,
 
         );
     }

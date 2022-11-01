@@ -8,7 +8,7 @@ class HomeController extends GetxController {
         await FirebaseAuth.instance.signOut();
         snackBarMessengers(message: appFonts.signOutSuccess);
         Get.toNamed(routeName.signUpScreen);
-      } on FirebaseAuthException catch (e) {
+      } on FirebaseAuthException {
         snackBarMessengers(message: appFonts.somethingWentWrong);
       } catch (e) {
         snackBarMessengers(message: appFonts.unknownError);
@@ -21,7 +21,7 @@ class HomeController extends GetxController {
         await GoogleSignIn().signOut();
         snackBarMessengers(message: appFonts.signOutSuccess);
         Get.toNamed(routeName.signUpScreen);
-      } on FirebaseAuthException catch (e) {
+      } on FirebaseAuthException {
         snackBarMessengers(message: appFonts.somethingWentWrong);
       } catch (e) {
         snackBarMessengers(message: appFonts.unknownError);

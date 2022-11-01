@@ -8,6 +8,7 @@ class ImagesCommon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Social Login Images Common
     return Image.asset(image!, scale: 15).inkWell(onTap: onTap);
   }
 }

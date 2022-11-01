@@ -22,7 +22,7 @@ class SignUpController extends GetxController {
     update();
   }
 
-  // Firebase Authentication
+  // Firebase Register With Email & Password
   signUpMethod() async {
     if (signUpGlobalKey.currentState!.validate()) {
       onLoadingTrue();
@@ -30,30 +30,22 @@ class SignUpController extends GetxController {
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
             email: emailController.text.toString(),
             password: passwordController.text.toString());
-        var user =  FirebaseAuth.instance.currentUser;
-         firebaseUser = user?.email;
-         update();
-        var data ={
-          "userData": user,
-          "type":"firebaseAuth"
-        };
+        var user = FirebaseAuth.instance.currentUser;
+        firebaseUser = user?.email;
+        update();
+        var data = {"userData": user, "type": "firebaseAuth"};
         onLoadingFalse();
-        Get.offAllNamed(routeName.facebookScreen,arguments: data);
+        appCtrl.storage.write("name", firebaseUser);
+        Get.offAllNamed(routeName.facebookScreen, arguments: data);
       } on FirebaseAuthException catch (e) {
         if (e.code == "email-already-in-use") {
           onLoadingFalse();
           snackBarMessengers(message: appFonts.emailAlreadyUse);
         }
-        onLoadingFalse();
-        snackBarMessengers(message: appFonts.somethingWentWrong);
       } catch (e) {
         onLoadingFalse();
         snackBarMessengers(message: appFonts.unknownError);
       }
     }
   }
-
-
-
-
 }

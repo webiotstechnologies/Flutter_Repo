@@ -5,5 +5,7 @@ class RouteName {
   final String numberScreen = "/numberScreen";
   final String homeScreen = "/homeScreen";
   final String facebookScreen = "/facebookScreen";
+  final String splashScreen = "/splashScreen";
+  final String resetPasswordScreen = "/resetPasswordScreen";
 
 }

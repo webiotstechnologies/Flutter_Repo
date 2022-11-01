@@ -19,8 +19,10 @@ class OtpController extends GetxController {
     update();
   }
 
+
   // Validate Otp Method
   onOtpMethod() async {
+    final data = Get.arguments;
     if (otpGlobalKey.currentState!.validate()) {
       onLoadingTrue();
       try {

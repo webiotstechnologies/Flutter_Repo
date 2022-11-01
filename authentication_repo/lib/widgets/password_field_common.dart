@@ -1,5 +1,4 @@
 import '../config.dart';
-import '../validation_form/text_field_validation_common.dart';
 
 class PasswordCommon extends StatelessWidget {
   final TextEditingController? passController;

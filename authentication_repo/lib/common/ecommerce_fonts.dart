@@ -38,4 +38,10 @@ class AppFonts {
     final signOut = "Google Sign Out";
     final signOutSuccess = "Sign Out Successfully";
     final firebaseSignOut = "Firebase Sign Out";
+    final areYouExit = 'Are You Sure Want To Exit ?';
+    final yes = "Yes";
+    final no = "No";
+    final resetPassword = "Reset Password";
+    final emailSend = "Email Send Successfully";
+    final loginAno = "Welcome User";
 }

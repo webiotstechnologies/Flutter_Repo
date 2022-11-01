@@ -1,5 +1,3 @@
-import 'package:authentication_repo/controllers/home_screen_controller.dart';
-
 import '../../config.dart';
 
 class HomeScreen extends StatelessWidget {

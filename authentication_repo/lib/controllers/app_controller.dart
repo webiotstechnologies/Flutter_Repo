@@ -1,7 +1,4 @@
-import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
-import '../common/theme/app_theme.dart';
-
+import 'package:authentication_repo/config.dart';
 
 class AppController extends GetxController {
   AppTheme _appTheme = AppTheme.fromType(ThemeType.light);

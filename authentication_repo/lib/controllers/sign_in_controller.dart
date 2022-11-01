@@ -43,7 +43,7 @@ class SignInController extends GetxController {
              password: passwordController.text.toString());
 
          var signIn =  FirebaseAuth.instance.currentUser;
-         signInData = signIn!.email;
+         userName = signIn!.email;
          update();
          var data = {
            "userData": signIn,
@@ -52,6 +52,7 @@ class SignInController extends GetxController {
          onLoadingFalse();
          emailController.text = "";
          passwordController.text = "";
+         appCtrl.storage.write("name", userName);
          Get.offAllNamed(routeName.facebookScreen,arguments: data);
        } on FirebaseAuthException catch (e) {
          if (e.code == 'wrong-password') {
@@ -99,9 +100,11 @@ class SignInController extends GetxController {
   Future signInAnonymous() async {
     try {
       onLoadingTrue();
-      final userCredential = await FirebaseAuth.instance.signInAnonymously();
+      await FirebaseAuth.instance.signInAnonymously();
       var user =  FirebaseAuth.instance.currentUser;
-      anonymousData = user!.uid;
+      userName = user!.uid;
+
+
       update();
       var data ={
         "userData": user,
@@ -109,6 +112,9 @@ class SignInController extends GetxController {
       };
 
       onLoadingFalse();
+      appCtrl.storage.write("name", userName);
+      appCtrl.storage.write("type", 'anonymously');
+
       Get.offAllNamed(routeName.facebookScreen,arguments: data);
     } on FirebaseAuthException catch (e) {
       switch (e.code) {
@@ -135,6 +141,10 @@ class SignInController extends GetxController {
    await FacebookAuth.instance.getUserData().then((userData) {
       isLoggedIn = true;
       userdata = userData;
+      appCtrl.storage.write("name", userdata["name"]);
+      appCtrl.storage.write("email", userdata["email"]);
+      appCtrl.storage.write("photo",  userdata["picture"]["data"]["url"]);
+
       update();
       var data ={
         "userData": userdata,
@@ -159,34 +169,19 @@ class SignInController extends GetxController {
         codeSent: (String verificationId, int? resendToken) async {
           verificationId = verificationId;
           var phoneUser =  FirebaseAuth.instance.currentUser;
-          phoneNumber = phoneUser!.phoneNumber;
+          userName = phoneUser?.phoneNumber;
           update();
           var data ={
-            "userData": phoneUser,
-            "type":"phoneNumber"
+            "userData": numberController.text,
+            "type":"phoneNumbers"
           };
           onLoadingFalse();
+          appCtrl.storage.write("name",  numberController.text);
           Get.toNamed(routeName.otpScreen,
               arguments: [numberController.text, verificationId,data]);
         },
         codeAutoRetrievalTimeout: (String verificationId) {},
       );
     }
-  }
-  @override
-  void onReady() {
-    userName = appCtrl.storage.read("name");
-    userEmail = appCtrl.storage.read("email");
-    userPhoto = appCtrl.storage.read("photo");
-
-    if(userName != null && userName != null && userPhoto != null) {
-         Get.offAllNamed(routeName.facebookScreen);
-    } else {
-      Get.offAllNamed(routeName.signInScreen);
-    }
-
-    update();
-    // TODO: implement onReady
-    super.onReady();
   }
 }

@@ -21,8 +21,8 @@ class LoginLayout extends StatelessWidget {
               Text(appFonts.forgotPass,
                       style: AppCss.montserratMedium16
                           .textColor(appCtrl.appTheme.indigo))
-                  .paddingOnly(left: Insets.i183)
-                  .inkWell(onTap: () => Get.toNamed(routeName.numberScreen))
+                  .paddingOnly(left: Insets.i182)
+                  .inkWell(onTap: ()=> Get.toNamed(routeName.resetPasswordScreen))
             ]),
             // SignIn Button
             ButtonCommon(
@@ -30,7 +30,7 @@ class LoginLayout extends StatelessWidget {
             TextCommon(
                     title: appFonts.dontHaveAnAccount,
                     subTitle: appFonts.signUp,
-                    onTap: () => Get.toNamed(routeName.signUpScreen))
+                    onTap: () => Get.offAllNamed(routeName.signUpScreen))
                 .paddingOnly(
                     top: Insets.i30, bottom: Insets.i30, left: Insets.i10),
             Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
@@ -41,9 +41,13 @@ class LoginLayout extends StatelessWidget {
               // Facebook Image
               ImagesCommon(
                   image: eImageAssets.facebook,
-                  onTap: () {
-                    signInCtrl.signInWithFacebook();
-                  }),
+                  onTap: ()=> signInCtrl.signInWithFacebook(),
+                  ),
+              // Login With Phone
+              ImagesCommon(
+                  image: eImageAssets.phone,
+                  onTap: ()=> Get.toNamed(routeName.numberScreen),
+                  ),
               // Anonymous Login Image
               ImagesCommon(
                   image: eImageAssets.spyware,

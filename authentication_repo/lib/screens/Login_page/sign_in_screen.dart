@@ -8,17 +8,26 @@ class SignInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<SignInController>(builder: (_) {
-      return Scaffold(
-          backgroundColor: appCtrl.appTheme.indigo,
-          body: signInCtrl.isLoading ? const AlertDialogBox() : Column(children: [
-            // Sign In & Welcome Layout
-            ExpandedTopCommon(title: appFonts.signIn),
-            ExpandedBottomCommon(
-              // LogIn Layout
-                child: const LoginLayout()
-                    .paddingSymmetric(horizontal: Insets.i30)
-                    .paddingOnly(top: Insets.i70))
-          ]));
+      return WillPopScope(
+          onWillPop: () async {
+            showDialog(
+                context: context,
+                builder: (BuildContext context) => const AlertDialogBack());
+            return false;
+          },
+          child: Scaffold(
+              backgroundColor: appCtrl.appTheme.indigo,
+              body: signInCtrl.isLoading
+                  ? const AlertDialogBox()
+                  : Column(children: [
+                      // Sign In & Welcome Layout
+                      ExpandedTopCommon(title: appFonts.signIn),
+                      ExpandedBottomCommon(
+                          // LogIn Layout
+                          child: const LoginLayout()
+                              .paddingSymmetric(horizontal: Insets.i30)
+                              .paddingOnly(top: Insets.i70))
+                    ])));
     });
   }
 }

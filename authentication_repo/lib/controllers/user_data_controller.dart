@@ -6,11 +6,7 @@ class UserDataController extends GetxController {
   String type = "",
       email = '',
       picture = '',
-      name = '',
-      anonymousData = '',
-      firebaseUser = "",
-      phoneNumber = '',
-      signInData = "";
+      name = '';
 
   bool isLoading = false;
 
@@ -26,42 +22,56 @@ class UserDataController extends GetxController {
 
   @override
   void onReady() async {
-    var data = Get.arguments ?? "";
-    type = data["type"];
-    if (type == "google") {
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-      final GoogleSignInAuthentication googleAuth =
-          await googleUser!.authentication;
-      email = googleUser.email;
-      name = googleUser.displayName!;
-      picture = googleUser.photoUrl!;
-
-    } else if (type == "facebook") {
-      userdata = data["userData"];
-      email = userdata["email"];
-      picture = userdata["picture"]["data"]["url"];
-      name = userdata["name"];
-
-    } else if (type == "anonymously") {
-      final userCredential = await FirebaseAuth.instance.signInAnonymously();
-      var user = FirebaseAuth.instance.currentUser;
-      anonymousData = user!.uid;
-
-    } else if (type == "firebaseAuth") {
-      var user = FirebaseAuth.instance.currentUser;
-      firebaseUser = user!.email!;
-      update();
-
-    } else if (type == "phoneNumber") {
-      var phoneUser = FirebaseAuth.instance.currentUser;
-      phoneNumber = phoneUser!.phoneNumber!;
-
-    } else if (type == "signInFirebase") {
-      var signIn = FirebaseAuth.instance.currentUser;
-      signInData = signIn!.email!;
+    var data = Get.arguments;
+    if (data == null) {
+      name = appCtrl.storage.read("name");
+      email = appCtrl.storage.read("email") ?? "";
+      picture = appCtrl.storage.read("photo") ?? "";
+      type = appCtrl.storage.read("type") ?? "";
+    } else {
+      type = data["type"];
+      if (type == "google") {
+        final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+        email = googleUser!.email;
+        name = googleUser.displayName!;
+        picture = googleUser.photoUrl!;
+      } else if (type == "facebook") {
+        userdata = data["userData"];
+        email = userdata["email"];
+        picture = userdata["picture"]["data"]["url"];
+        name = userdata["name"];
+      } else if (type == "anonymously") {
+        var user = FirebaseAuth.instance.currentUser;
+        name = user!.uid;
+      } else if (type == "firebaseAuth") {
+        var user = FirebaseAuth.instance.currentUser;
+        name = user!.email!;
+        update();
+      } else if (type == "phoneNumbers") {
+        var phoneUser = FirebaseAuth.instance.currentUser;
+        name = phoneUser!.phoneNumber!;
+      } else if (type == "signInFirebase") {
+        var signIn = FirebaseAuth.instance.currentUser;
+        name = signIn!.email!;
+      }
     }
     update();
     // TODO: implement onReady
     super.onReady();
+  }
+
+  // Logout Button
+  onLogout () async{
+    onLoadingTrue();
+    await GoogleSignIn().signOut();
+    await FirebaseAuth.instance.signOut();
+    FacebookAuth.instance.logOut().then((value) {
+      isLoggedIn = false;
+      userdata = {};
+      update();
+      onLoadingFalse();
+      Get.toNamed(routeName.signInScreen);
+    });
+    appCtrl.storage.erase();
   }
 }

@@ -10,6 +10,8 @@ class AppRoute {
     GetPage(name: _routeName.numberScreen, page: () =>  const NumberScreen()),
     GetPage(name: _routeName.facebookScreen, page: () =>   FbLogInLayout()),
     GetPage(name: _routeName.homeScreen, page: () =>  HomeScreen()),
+    GetPage(name: _routeName.splashScreen, page: () =>  SplashScreen()),
+    GetPage(name: _routeName.resetPasswordScreen, page: () =>   ResetPasswordScreen()),
 
   ];
 }
