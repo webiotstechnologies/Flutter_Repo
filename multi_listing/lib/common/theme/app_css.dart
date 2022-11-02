@@ -1,7 +1,6 @@
-
+import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../../config.dart';
+import 'package:multi_listing/common/extension/text_style_extensions.dart';
 part 'scale.dart';
 
 class AppCss {
@@ -26,6 +25,7 @@ class AppCss {
 
   //Text Style montserrat extra bold
   static TextStyle get montserratExtraBold65 => montserrat.extraThickBold.size(FontSizes.f65);
+  static TextStyle get montserratExtraBold15 => montserrat.extraThickBold.size(FontSizes.f14);
 
 
   static TextStyle get montserratBlack65 => montserrat.black.size(FontSizes.f65);
@@ -38,10 +38,12 @@ class AppCss {
 
   //Text Style montserrat bold
   static TextStyle get montserratExtraBold18 => montserrat.extraBold.size(FontSizes.f18);
+  static TextStyle get montserratExtraBold11 => montserrat.extraBold.size(FontSizes.f11);
   //Text Style semi montserrat bold
   static TextStyle get montserratBold50 => montserrat.bold.size(FontSizes.f50);
 
   static TextStyle get montserratSemiBold16=> montserrat.semiBold.size(FontSizes.f16);
+  static TextStyle get montserratSemiBold10=> montserrat.semiBold.size(FontSizes.f10);
   static TextStyle get montserratSemiBold14=> montserrat.semiBold.size(FontSizes.f14);
   static TextStyle get montserratSemiBold11=> montserrat.semiBold.size(FontSizes.f11);
   static TextStyle get montserratSemiBold12=> montserrat.semiBold.size(FontSizes.f12);
