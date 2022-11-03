@@ -1,7 +1,4 @@
-import 'package:multi_listing/common/extension/spacing.dart';
 import '../../config.dart';
-import '../../controllers/home_controller.dart';
-import '../../widgets/text_field.dart';
 
 class HomeScreen extends StatelessWidget {
   final homeCtrl = Get.put(HomeController());
@@ -23,27 +20,28 @@ class HomeScreen extends StatelessWidget {
               elevation: 0,
               backgroundColor: appCtrl.appTheme.indigo,
               centerTitle: true,
-              title: Text(appFonts.multiListing,style: AppCss.montserratSemiBold20,)),
-          body: Column(children: [
-            Row(children: [
-              Expanded(
-                  child: TextFields(
-                      hintText: appFonts.searchHere,
-                      fillColor: appCtrl.appTheme.whiteColor,
-                      prefixIcon:
-                          Icon(Icons.search, color: appCtrl.appTheme.indigo))),
-              const HSpace(Sizes.s10),
-              Icon(
-                Icons.filter_list,
-                color: appCtrl.appTheme.whiteColor,
-              ).paddingAll(Insets.i12).decorated(
-                  color: appCtrl.appTheme.indigo,
-                  borderRadius:
-                      const BorderRadius.all(Radius.circular(AppRadius.r30)))
-            ]),
-            const VSpace(Sizes.s20),
-            homeCtrl.isShow ? const GridViewScreen() : const ListViewScreen()
-          ]).paddingSymmetric(horizontal: Insets.i20, vertical: Insets.i10));
+              title: Text(appFonts.multiListing,
+                  style: AppCss.montserratSemiBold20)),
+          body: SingleChildScrollView(
+            child: Column(children: [
+              TextFields(
+                 onChanged: (value)=> homeCtrl.onFinal(value),
+                 controller: homeCtrl.searchController,
+                  hintText: appFonts.searchHere,
+                  fillColor: appCtrl.appTheme.whiteColor,
+                  prefixIcon: Icon(Icons.search, color: appCtrl.appTheme.indigo)),
+              const VSpace(Sizes.s10),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+                SortingButton(title: appFonts.filter, icon: Icons.filter_list),
+                SortingButton(title: appFonts.sort, icon: Icons.sort)
+              ]),
+              const VSpace(Sizes.s10),
+              SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.69,
+                  child:
+                      homeCtrl.isShow ? const GridViewScreen() : const ListViewScreen())
+            ]).paddingSymmetric(horizontal: Insets.i20, vertical: Insets.i10),
+          ));
     });
   }
 }

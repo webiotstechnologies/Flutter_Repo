@@ -8,6 +8,7 @@ class TextFields extends StatelessWidget {
   final Widget? prefixIcon;
   final Color? fillColor;
   final InputBorder? border;
+ final ValueChanged? onChanged;
 
   const TextFields(
       {Key? key,
@@ -17,7 +18,9 @@ class TextFields extends StatelessWidget {
       this.suffixIcon,
       this.prefixIcon,
       this.border,
-      this.fillColor})
+      this.fillColor,
+      this.onChanged,
+      })
       : super(key: key);
 
   @override
@@ -26,6 +29,7 @@ class TextFields extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppRadius.r20),
         borderSide: BorderSide.none);
     return TextFormField(
+      onChanged: onChanged,
         validator: validator,
         controller: controller,
         decoration: InputDecoration(

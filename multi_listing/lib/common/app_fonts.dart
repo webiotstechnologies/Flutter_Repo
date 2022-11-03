@@ -4,6 +4,10 @@ class AppFonts {
     final multiListing = "Multi Listing";
     final searchHere = "Search";
     final outfitIsAwesome = "Outfit Is Awesome Try It!";
+    final filter = "Filter";
+    final sort = "Sort";
+    final buy = "Buy";
+    final size = "Size: ";
 
     final blackDenimJeans = "Black Denim Jeans";
     final blackCottonJeans = "Black Cotton Jeans";

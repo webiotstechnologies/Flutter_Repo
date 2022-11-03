@@ -8,7 +8,7 @@ class ImageAssets {
   final String blackKurtiGirl2 = "assets/images/bkurti2.jpg";
   final String blackKurtiGirl3 = "assets/images/bkurti3.jpg";
   final String blackJeansBoy = "assets/images/bjeansboy.jpg";
-  final String blackJeansBoy2 = "assets/images/bjeansboy.jpg";
+  final String blackJeansBoy2 = "assets/images/bjeansboy2.jpg";
 
 
   final String blueJeansBoy = "assets/images/bluejeansboy.jpg";
