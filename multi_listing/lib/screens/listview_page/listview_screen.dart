@@ -10,9 +10,9 @@ class ListViewScreen extends StatelessWidget {
           scrollDirection: Axis.vertical,
           child: homeCtrl.items.isEmpty &&
                   homeCtrl.searchController.text.isNotEmpty
-              ? Column(children: [Text("Item Not Found")])
+              ? Row(children: [Text(appFonts.itemNotFound,style: AppCss.montserratSemiBold14)])
               : Column(
-                  children: homeCtrl.searchController.text.isNotEmpty
+                  children: homeCtrl.items.isNotEmpty
                       ? homeCtrl.items
                           .asMap()
                           .entries

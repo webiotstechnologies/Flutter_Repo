@@ -43,6 +43,7 @@ class AppCss {
   static TextStyle get montserratBold50 => montserrat.bold.size(FontSizes.f50);
 
   static TextStyle get montserratSemiBold16=> montserrat.semiBold.size(FontSizes.f16);
+  static TextStyle get montserratSemiBold18=> montserrat.semiBold.size(FontSizes.f18);
   static TextStyle get montserratSemiBold10=> montserrat.semiBold.size(FontSizes.f10);
   static TextStyle get montserratSemiBold14=> montserrat.semiBold.size(FontSizes.f14);
   static TextStyle get montserratSemiBold11=> montserrat.semiBold.size(FontSizes.f11);

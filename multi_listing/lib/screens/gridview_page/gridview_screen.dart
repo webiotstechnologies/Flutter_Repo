@@ -1,5 +1,5 @@
 import '../../config.dart';
-import '../../widgets/gridview_product_list.dart';
+
 
 class GridViewScreen extends StatelessWidget {
   const GridViewScreen({Key? key}) : super(key: key);
@@ -10,13 +10,11 @@ class GridViewScreen extends StatelessWidget {
       return SingleChildScrollView(
           child: homeCtrl.items.isEmpty &&
                   homeCtrl.searchController.text.isNotEmpty
-              ? Center(
-                child: Column(
-                  children: [
-                    Text("Item No Found")
-                  ],
-                ),
-              )
+              ? Row(children: [
+                  const Icon(Icons.search_off),
+                  Text(appFonts.itemNotFound,
+                      style: AppCss.montserratSemiBold14)
+                ])
               : Column(children: [
                   GridView.builder(
                       scrollDirection: Axis.vertical,
@@ -37,7 +35,7 @@ class GridViewScreen extends StatelessWidget {
                             data: homeCtrl.searchController.text.isNotEmpty
                                 ? homeCtrl.items[i]
                                 : homeCtrl.productList[i]);
-                      }),
+                      })
                 ]));
     });
   }

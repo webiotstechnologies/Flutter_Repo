@@ -23,6 +23,7 @@ export '../../widgets/sorting_button_common.dart';
 export '../../widgets/text_field.dart';
 export 'package:get/get.dart';
 export '../common/assets/index.dart';
+export '../../widgets/gridview_product_list.dart';
 
 final appCtrl = Get.isRegistered<AppController>()
     ? Get.find<AppController>()

@@ -5,7 +5,7 @@ class AppArray {
     {
       "image": eImageAssets.blackJeansBoy,
       "title": appFonts.blackDenimJeans,
-      "price": "\$160",
+      "price": 160,
       "size": "M",
       "color": "black",
       "type": "male"
@@ -13,7 +13,7 @@ class AppArray {
     {
       "image": eImageAssets.blackJeansBoy2,
       "title": appFonts.blackCottonJeans,
-      "price": "\$58",
+      "price": 58,
       "size": "M",
       "color": "black",
       "type": "male"
@@ -21,7 +21,7 @@ class AppArray {
     {
       "image": eImageAssets.pinkTShirtBoy,
       "title": appFonts.pinkTShirt,
-      "price": "\$30",
+      "price": 30,
       "size": "M",
       "color": "pink",
       "type": "male"
@@ -29,7 +29,7 @@ class AppArray {
     {
       "image": eImageAssets.whiteShirtBoy,
       "title": appFonts.whiteSilkShirtMen,
-      "price": "\$20",
+      "price": 20,
       "size": "XL",
       "color": "white",
       "type": "male"
@@ -37,7 +37,7 @@ class AppArray {
     {
       "image": eImageAssets.whiteShirtBoy2,
       "title": appFonts.whiteFormalShirtMen,
-      "price": "\$65",
+      "price": 65,
       "size": "M",
       "color": "white",
       "type": "male"
@@ -45,7 +45,7 @@ class AppArray {
     {
       "image": eImageAssets.whiteShirtGirl,
       "title": appFonts.whiteCottonShirtGirl,
-      "price": "\$29",
+      "price": 29,
       "size": "M",
       "color": "white",
       "type": "female"
@@ -53,7 +53,7 @@ class AppArray {
     {
       "image": eImageAssets.yellowKurtiGirl,
       "title": appFonts.yellowKolhapuriKurti,
-      "price": "\$51",
+      "price": 51,
       "size": "L",
       "color": "yellow",
       "type": "female"
@@ -61,7 +61,7 @@ class AppArray {
     {
       "image": eImageAssets.yellowKurtiGirl2,
       "title": appFonts.yellowFormalKurti,
-      "price": "\$176",
+      "price": 176,
       "size": "S",
       "color": "yellow",
       "type": "female"
@@ -69,7 +69,7 @@ class AppArray {
     {
       "image": eImageAssets.yellowKurtaBoy,
       "title": appFonts.yellowFormalKurta,
-      "price": "\$76",
+      "price": 76,
       "size": "M",
       "color": "yellow",
       "type": "male"
@@ -77,7 +77,7 @@ class AppArray {
     {
       "image": eImageAssets.yellowKurtaBoy2,
       "title": appFonts.yellowKolhapuriKurta,
-      "price": "\$88",
+      "price": 88,
       "size": "S",
       "color": "yellow",
       "type": "male"
@@ -85,7 +85,7 @@ class AppArray {
     {
       "image": eImageAssets.yellowKurtaBoy3,
       "title": appFonts.yellowHandWorkKurta,
-      "price": "\$80",
+      "price": 80,
       "size": "L",
       "color": "yellow",
       "type": "male"
@@ -93,7 +93,7 @@ class AppArray {
     {
       "image": eImageAssets.blackTShirtGirl,
       "title": appFonts.blackTShirtGirl,
-      "price": "\$29",
+      "price": 29,
       "size": "M",
       "color": "black",
       "type": "female"
@@ -101,7 +101,7 @@ class AppArray {
     {
       "image": eImageAssets.blueShirtGirl,
       "title": appFonts.blueShirtGirl,
-      "price": "\$41",
+      "price": 41,
       "size": "S",
       "color": "blue",
       "type": "female"
@@ -109,7 +109,7 @@ class AppArray {
     {
       "image": eImageAssets.blueShirtGirl2,
       "title": appFonts.blueLinedShirtGirl,
-      "price": "\$67",
+      "price": 67,
       "size": "M",
       "color": "blue",
       "type": "female"
@@ -117,7 +117,7 @@ class AppArray {
     {
       "image": eImageAssets.blueShirtBoy,
       "title": appFonts.blueShirtMen,
-      "price": "\$99",
+      "price": 99,
       "size": "L",
       "color": "blue",
       "type": "male"
@@ -125,7 +125,7 @@ class AppArray {
     {
       "image": eImageAssets.blackKurtiGirl,
       "title": appFonts.blackKurtiGirl,
-      "price": "\$58",
+      "price": 58,
       "size": "S",
       "color": "black",
       "type": "female"
@@ -133,7 +133,7 @@ class AppArray {
     {
       "image": eImageAssets.blackKurtiGirl2,
       "title": appFonts.blackFormalKurtiGirl,
-      "price": "\$15",
+      "price": 15,
       "size": "M",
       "color": "black",
       "type": "female"
@@ -141,7 +141,7 @@ class AppArray {
     {
       "image": eImageAssets.blackKurtiGirl3,
       "title": appFonts.blackImportedKurtiGirl,
-      "price": "\$54",
+      "price": 54,
       "size": "XL",
       "color": "black",
       "type": "female"
@@ -149,7 +149,7 @@ class AppArray {
     {
       "image": eImageAssets.blueKurtaBoy,
       "title": appFonts.blueFormalKurta,
-      "price": "\$189",
+      "price": 189,
       "size": "L",
       "color": "blue",
       "type": "male"
@@ -157,7 +157,7 @@ class AppArray {
     {
       "image": eImageAssets.blueKurtaBoy2,
       "title": appFonts.blueFancyKurta,
-      "price": "\$77",
+      "price": 77,
       "size": "M",
       "color": "blue",
       "type": "male"
@@ -165,7 +165,7 @@ class AppArray {
     {
       "image": eImageAssets.blackShirtBoy,
       "title": appFonts.blackShirt,
-      "price": "\$44",
+      "price": 44,
       "size": "XL",
       "color": "black",
       "type": "male"
@@ -173,7 +173,7 @@ class AppArray {
     {
       "image": eImageAssets.blackTShirtBoy,
       "title": appFonts.blackTShirtMen,
-      "price": "\$49",
+      "price": 49,
       "size": "L",
       "color": "black",
       "type": "male"
@@ -181,7 +181,7 @@ class AppArray {
     {
       "image": eImageAssets.yellowTShirtBoy,
       "title": appFonts.yellowFormalTShirtMen,
-      "price": "\$56",
+      "price": 56,
       "size": "XL",
       "color": "yellow",
       "type": "male"
@@ -189,7 +189,7 @@ class AppArray {
     {
       "image": eImageAssets.yellowTShirtGirl,
       "title": appFonts.yellowTShirtGirl,
-      "price": "\$142",
+      "price": 142,
       "size": "M",
       "color": "yellow",
       "type": "female"
@@ -197,7 +197,7 @@ class AppArray {
     {
       "image": eImageAssets.yellowTShirtBoy2,
       "title": appFonts.yellowTShirtMen,
-      "price": "\$63",
+      "price": 63,
       "size": "S",
       "color": "yellow",
       "type": "male"
@@ -205,7 +205,7 @@ class AppArray {
     {
       "image": eImageAssets.whiteShoesBoy,
       "title": appFonts.whiteFancyShoes,
-      "price": "\$125",
+      "price": 125,
       "size": "M",
       "color": "white",
       "type": "male"
@@ -213,7 +213,7 @@ class AppArray {
     {
       "image": eImageAssets.whiteShoesBoy2,
       "title": appFonts.whiteBrandedShoes,
-      "price": "\$199",
+      "price": 199,
       "size": "L",
       "color": "white",
       "type": "male"
@@ -221,7 +221,7 @@ class AppArray {
     {
       "image": eImageAssets.blueShoesBoy,
       "title": appFonts.blueGucciShoes,
-      "price": "\$229",
+      "price": 229,
       "size": "M",
       "color": "blue",
       "type": "male"
@@ -229,7 +229,7 @@ class AppArray {
     {
       "image": eImageAssets.blueShoesBoy2,
       "title": appFonts.blueLoferShoes,
-      "price": "\$99",
+      "price": 99,
       "size": "M",
       "color": "blue",
       "type": "male"
@@ -237,7 +237,7 @@ class AppArray {
     {
       "image": eImageAssets.blackShoesBoy,
       "title": appFonts.blackShoes,
-      "price": "\$149",
+      "price": 149,
       "size": "S",
       "color": "black",
       "type": "male"
@@ -245,7 +245,7 @@ class AppArray {
     {
       "image": eImageAssets.blackShoesBoy2,
       "title": appFonts.blackShoesLofer,
-      "price": "\$98",
+      "price": 98,
       "size": "M",
       "color": "black",
       "type": "male"
@@ -253,7 +253,7 @@ class AppArray {
     {
       "image": eImageAssets.blueJeansBoy,
       "title": appFonts.blueFancyJeans,
-      "price": "\$128",
+      "price": 128,
       "size": "L",
       "color": "blue",
       "type": "male"
@@ -261,7 +261,7 @@ class AppArray {
     {
       "image": eImageAssets.blueJeansBoy2,
       "title": appFonts.blueFormalJeans,
-      "price": "\$175",
+      "price": 175,
       "size": "L",
       "color": "blue",
       "type": "male"
@@ -269,7 +269,7 @@ class AppArray {
     {
       "image": eImageAssets.blueJeansBoy3,
       "title": appFonts.blueCargoJeans,
-      "price": "\$234",
+      "price": 234,
       "size": "M",
       "color": "blue",
       "type": "male"

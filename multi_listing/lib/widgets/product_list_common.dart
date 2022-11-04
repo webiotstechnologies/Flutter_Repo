@@ -43,11 +43,11 @@ class ProductLists extends StatelessWidget {
                   .textColor(appCtrl.appTheme.lightBlack)),
           const VSpace(Sizes.s20),
           Row(children: [
-            Text(data["price"],
+            Text("${appCtrl.priceSymbol}${data["price"].toString()}",
                 style: AppCss.montserratSemiBold20
                     .textColor(appCtrl.appTheme.indigo)),
             const HSpace(Sizes.s80),
-            Text("Buy",
+            Text(appFonts.buy,
                     style: AppCss.montserratSemiBold14
                         .textColor(appCtrl.appTheme.whiteColor))
                 .paddingSymmetric(horizontal: Insets.i18, vertical: Insets.i8)

@@ -8,6 +8,19 @@ class AppFonts {
     final sort = "Sort";
     final buy = "Buy";
     final size = "Size: ";
+    final itemNotFound = "Item Not Found";
+    final lowToHigh = "Price: Low To High";
+    final highToLow = "Price: High To Low";
+    final gender = "Gender";
+    final size2 = "Size";
+    final color = "Color";
+    final male = "Male";
+    final female = "Female";
+    final s = "S";
+    final m = "M";
+    final l = "L";
+    final xl = "XL";
+
 
     final blackDenimJeans = "Black Denim Jeans";
     final blackCottonJeans = "Black Cotton Jeans";

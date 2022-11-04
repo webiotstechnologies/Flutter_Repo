@@ -43,7 +43,10 @@ class AppTheme {
   Color textFieldColor;
   Color lightBlack;
   Color indigoShade;
-
+  Color pink;
+  Color blue;
+  Color yellow;
+  Color greyShade;
 
 
   /// Default constructor
@@ -82,6 +85,10 @@ class AppTheme {
     required this.textFieldColor,
     required this.lightBlack,
     required this.indigoShade,
+    required this.pink,
+    required this.blue,
+    required this.yellow,
+    required this.greyShade,
 
   });
 
@@ -122,8 +129,11 @@ class AppTheme {
           lightIndigo: Colors.indigo.shade400,
           textFieldColor: Colors.grey.shade100,
           lightBlack: Colors.black54,
-          indigoShade: Colors.indigo.shade200
-
+          indigoShade: Colors.indigo.shade200,
+          yellow:Colors.yellow,
+          pink: Colors.pink.shade300,
+          blue: Colors.blue,
+          greyShade: Colors.grey.shade200,
         );
 
       case ThemeType.dark:
@@ -160,7 +170,11 @@ class AppTheme {
           lightIndigo: Colors.indigo.shade400,
           textFieldColor: Colors.grey.shade100,
           lightBlack: Colors.black54,
-            indigoShade: Colors.indigo.shade200
+            indigoShade: Colors.indigo.shade200,
+            yellow:Colors.yellow,
+            pink: Colors.pinkAccent,
+            blue: Colors.blue,
+          greyShade: Colors.grey.shade200,
         );
     }
   }

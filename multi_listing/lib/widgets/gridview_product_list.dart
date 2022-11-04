@@ -47,7 +47,7 @@ class GridviewList extends StatelessWidget {
               Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(data["price"],
+                    Text("${appCtrl.priceSymbol}${data["price"].toString()}",
                         style: AppCss.montserratSemiBold20
                             .textColor(appCtrl.appTheme.indigo)),
                     Text("Buy",

@@ -4,17 +4,18 @@ class SortingButton extends StatelessWidget {
   final IconData? icon;
   final String? title;
 
+
   const SortingButton({Key? key, this.title, this.icon}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(children: [
-      Icon(icon, size: 25, color: appCtrl.appTheme.whiteColor)
+      Icon(icon, size: Sizes.s18, color: appCtrl.appTheme.whiteColor)
           .paddingOnly(right: Insets.i10),
       Text(title!,
           style: AppCss.montserratSemiBold14
               .textColor(appCtrl.appTheme.whiteColor))
-    ]).paddingSymmetric(horizontal: Insets.i50, vertical: Insets.i5).decorated(
+    ]).paddingSymmetric(horizontal: Insets.i50, vertical: Insets.i10).decorated(
         color: appCtrl.appTheme.indigo,
         borderRadius: const BorderRadius.all(Radius.circular(AppRadius.r30)));
   }

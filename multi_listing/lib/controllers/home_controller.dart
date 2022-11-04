@@ -1,14 +1,21 @@
+import 'dart:developer';
+
 import '../config.dart';
 
 class HomeController extends GetxController {
   TextEditingController searchController = TextEditingController();
   bool isShow = false;
+  int selectIndex = 0;
   List<dynamic> productList = appArray.listImages;
   List items = [];
 
-  /* List foundUsers = [];*/
   onChanges() {
     isShow = !isShow;
+    update();
+  }
+
+  onGenderChange(int index) {
+    selectIndex = index;
     update();
   }
 
@@ -29,6 +36,37 @@ class HomeController extends GetxController {
     }
   }
 
+  onLowToHigh() {
+    productList.sort((a, b) => a["price"].compareTo(b["price"]));
+    update();
+  }
+
+  onHighToLow() {
+    productList.sort((a, b) => b["price"].compareTo(a["price"]));
+    update();
+  }
+
+  onMale() {
+    items = [];
+    List<dynamic> data = productList.where((element) {
+      return element["type"] == "male";
+    }).toList();
+
+    items = data;
+    update();
+  }
+
+  onFemale() {
+    items = [];
+    productList.where((element) {
+      if(element["type"] == "female"){
+        items.add(element);
+      }
+      return true;
+    }).toList();
+    update();
+    Get.forceAppUpdate();
+  }
 /* @override
     void onReady() {
         items.addAll(productList);

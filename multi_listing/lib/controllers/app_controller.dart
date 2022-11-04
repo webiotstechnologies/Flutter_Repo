@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:multi_listing/widgets/filter_sheet_common.dart';
+import 'package:multi_listing/widgets/sorting_sheet_common.dart';
 
 import '../common/theme/app_theme.dart';
 
@@ -13,6 +15,14 @@ class AppController extends GetxController {
   String languageVal = "in";
   int currVal = 1;
   String priceSymbol = "\$";
+
+  sortingBottomSheet (){
+    Get.bottomSheet(const SortingBottomSheetCommon());
+  }
+
+  filterBottomSheet () {
+    Get.bottomSheet(FilterBottomSheetCommon());
+  }
 
   //update theme
   updateTheme(theme) {
