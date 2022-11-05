@@ -1,7 +1,8 @@
+import 'package:multi_listing/widgets/size_layout_common.dart';
+
 import '../config.dart';
-import '../screens/app_pages/layout/colors_common.dart';
-import '../screens/app_pages/layout/gender_common.dart';
-import '../screens/app_pages/layout/size_common.dart';
+import 'color_layout_common.dart';
+import 'gender_common.dart';
 
 class FilterBottomSheetCommon extends StatelessWidget {
   const FilterBottomSheetCommon({Key? key}) : super(key: key);
@@ -16,50 +17,14 @@ class FilterBottomSheetCommon extends StatelessWidget {
             Text(appFonts.filter, style: AppCss.montserratSemiBold18)
                 .paddingOnly(bottom: Insets.i10),
             const Divider(thickness: 2),
-            Row(children: [
-              Text(appFonts.gender, style: AppCss.montserratSemiBold16),
-              GenderCommon(
-                      title: appFonts.male,
-                      index: 0,
-                      selectIndex: homeCtrl.selectIndex)
-                  .inkWell(onTap: () {
-                homeCtrl.onGenderChange(0);
-                homeCtrl.onMale();
-                homeCtrl.update();
-              })
-                  .paddingSymmetric(horizontal: Insets.i80),
-              GenderCommon(
-                      title: appFonts.female,
-                      index: 1,
-                      selectIndex: homeCtrl.selectIndex)
-                  .inkWell(onTap: () {
-                homeCtrl.onGenderChange(1);
-                homeCtrl.onFemale();
-                homeCtrl.update();
-              })
-            ]).paddingSymmetric(vertical: Insets.i15),
+            // Gender Filter
+            const GenderCommon(),
             const Divider(thickness: 2),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(appFonts.size2, style: AppCss.montserratSemiBold16),
-                SizeCommon(title: appFonts.s),
-                SizeCommon(title: appFonts.l),
-                SizeCommon(title: appFonts.m),
-                SizeCommon(title: appFonts.xl),
-              ],
-            ).paddingSymmetric(vertical: Insets.i15),
+            // Size Filter
+            const SizeLayoutCommon(),
             const Divider(thickness: 2),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(appFonts.color, style: AppCss.montserratSemiBold16),
-                ColorsCommon(color: appCtrl.appTheme.blue),
-                ColorsCommon(color: appCtrl.appTheme.pink),
-                ColorsCommon(color: appCtrl.appTheme.blackColor),
-                ColorsCommon(color: appCtrl.appTheme.whiteColor),
-              ],
-            ).paddingSymmetric(vertical: Insets.i15)
+            // Color Filter
+            const ColorLayoutCommon()
           ]).paddingSymmetric(horizontal: Insets.i20, vertical: Insets.i20))
           .decorated(
               color: appCtrl.appTheme.greyShade,

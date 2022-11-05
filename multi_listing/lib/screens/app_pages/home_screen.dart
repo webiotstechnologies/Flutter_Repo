@@ -27,7 +27,7 @@ class HomeScreen extends StatelessWidget {
           body: SingleChildScrollView(
             child: Column(children: [
               TextFields(
-                  onChanged: (value) => homeCtrl.onFinal(value),
+                  onChanged: (value) => homeCtrl.onFinal(value,homeCtrl.gender,homeCtrl.size,homeCtrl.color),
                   controller: homeCtrl.searchController,
                   hintText: appFonts.searchHere,
                   fillColor: appCtrl.appTheme.whiteColor,

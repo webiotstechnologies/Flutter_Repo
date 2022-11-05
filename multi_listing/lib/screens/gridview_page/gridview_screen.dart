@@ -1,4 +1,5 @@
 import '../../config.dart';
+import '../../widgets/no_result_common.dart';
 
 
 class GridViewScreen extends StatelessWidget {
@@ -10,16 +11,12 @@ class GridViewScreen extends StatelessWidget {
       return SingleChildScrollView(
           child: homeCtrl.items.isEmpty &&
                   homeCtrl.searchController.text.isNotEmpty
-              ? Row(children: [
-                  const Icon(Icons.search_off),
-                  Text(appFonts.itemNotFound,
-                      style: AppCss.montserratSemiBold14)
-                ])
+              ? const NoItemFound()
               : Column(children: [
                   GridView.builder(
                       scrollDirection: Axis.vertical,
                       physics: const NeverScrollableScrollPhysics(),
-                      itemCount: homeCtrl.searchController.text.isNotEmpty
+                      itemCount: homeCtrl.items.isNotEmpty
                           ? homeCtrl.items.length
                           : homeCtrl.productList.length,
                       shrinkWrap: true,
@@ -32,7 +29,7 @@ class GridViewScreen extends StatelessWidget {
                               maxCrossAxisExtent: 200),
                       itemBuilder: (BuildContext context, i) {
                         return GridviewList(
-                            data: homeCtrl.searchController.text.isNotEmpty
+                            data: homeCtrl.items.isNotEmpty
                                 ? homeCtrl.items[i]
                                 : homeCtrl.productList[i]);
                       })

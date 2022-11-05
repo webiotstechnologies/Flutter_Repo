@@ -2,8 +2,10 @@ import '../../../config.dart';
 
 class ColorsCommon extends StatelessWidget {
   final Color? color;
-
-  const ColorsCommon({Key? key, this.color}) : super(key: key);
+  final int? selectIndex;
+  final int? index;
+  final GestureTapCallback? onTap;
+  const  ColorsCommon({Key? key, this.color,this.onTap,this.selectIndex,this.index}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +17,9 @@ class ColorsCommon extends StatelessWidget {
           width: 25,
         ).decorated(
             color: color,
-            borderRadius: const BorderRadius.all(Radius.circular(AppRadius.r50))),
+            borderRadius: const BorderRadius.all(Radius.circular(AppRadius.r50))).inkWell(onTap: onTap),
         const VSpace(Sizes.s8),
-        Container(height: 1,width: 30,color: appCtrl.appTheme.blackColor)
+       selectIndex == index ? Container(height: 1,width: 30,color: appCtrl.appTheme.blackColor) : Container()
       ]
     );
   }

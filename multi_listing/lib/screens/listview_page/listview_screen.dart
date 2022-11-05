@@ -1,5 +1,6 @@
 import '../../config.dart';
 
+
 class ListViewScreen extends StatelessWidget {
   const ListViewScreen({Key? key}) : super(key: key);
 
@@ -10,7 +11,7 @@ class ListViewScreen extends StatelessWidget {
           scrollDirection: Axis.vertical,
           child: homeCtrl.items.isEmpty &&
                   homeCtrl.searchController.text.isNotEmpty
-              ? Row(children: [Text(appFonts.itemNotFound,style: AppCss.montserratSemiBold14)])
+              ? const NoItemFound()
               : Column(
                   children: homeCtrl.items.isNotEmpty
                       ? homeCtrl.items

@@ -11,10 +11,10 @@ class SortingBottomSheetCommon extends StatelessWidget {
           child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text(appFonts.sort, style: AppCss.montserratSemiBold18),
             Text(appFonts.lowToHigh,style: AppCss.montserratMedium16).inkWell(onTap: () {
-              homeCtrl.onLowToHigh();
+              homeCtrl.onFinal(homeCtrl.searchController.text, homeCtrl.gender,homeCtrl.size,homeCtrl.color,his: false);
             }).paddingSymmetric(vertical: Insets.i20),
             Text(appFonts.highToLow,style: AppCss.montserratMedium16).inkWell(onTap: () {
-              homeCtrl.onHighToLow();
+              homeCtrl.onFinal(homeCtrl.searchController.text, homeCtrl.gender,homeCtrl.size,homeCtrl.color,his: true);
             }),
           ]).paddingSymmetric(horizontal: Insets.i20, vertical: Insets.i20),
         ).decorated(
