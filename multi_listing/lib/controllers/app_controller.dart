@@ -16,12 +16,14 @@ class AppController extends GetxController {
   int currVal = 1;
   String priceSymbol = "\$";
 
+  // Sorting BottomSheet
   sortingBottomSheet (){
     Get.bottomSheet(const SortingBottomSheetCommon());
   }
 
+  // Filter BottomSheet
   filterBottomSheet () {
-    Get.bottomSheet(FilterBottomSheetCommon());
+    Get.bottomSheet(const FilterBottomSheetCommon());
   }
 
   //update theme

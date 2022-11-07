@@ -20,6 +20,7 @@ class AppFonts {
     final m = "M";
     final l = "L";
     final xl = "XL";
+    final reset = "Reset";
 
 
     final blackDenimJeans = "Black Denim Jeans";

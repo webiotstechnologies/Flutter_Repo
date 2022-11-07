@@ -1,6 +1,8 @@
 import 'package:multi_listing/config.dart';
 
-void main() {
+void main() async{
+  await GetStorage.init();
+
   runApp(const MyApp());
 }
 
@@ -11,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home:  HomeScreen(),
+      home:  SplashScreen(),
       getPages: AppRoute().getPages,
     );
   }

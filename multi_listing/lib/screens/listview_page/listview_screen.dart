@@ -1,6 +1,5 @@
 import '../../config.dart';
 
-
 class ListViewScreen extends StatelessWidget {
   const ListViewScreen({Key? key}) : super(key: key);
 
@@ -9,21 +8,17 @@ class ListViewScreen extends StatelessWidget {
     return GetBuilder<HomeController>(builder: (homeCtrl) {
       return SingleChildScrollView(
           scrollDirection: Axis.vertical,
-          child: homeCtrl.items.isEmpty &&
-                  homeCtrl.searchController.text.isNotEmpty
-              ? const NoItemFound()
-              : Column(
-                  children: homeCtrl.items.isNotEmpty
-                      ? homeCtrl.items
-                          .asMap()
-                          .entries
-                          .map((e) => ProductLists(data: e.value))
-                          .toList()
-                      : homeCtrl.productList
-                          .asMap()
-                          .entries
-                          .map((e) => ProductLists(data: e.value))
-                          .toList()));
+          child: homeCtrl.items.isNotEmpty
+              // All Items In ListView
+              ? Column(children: [
+                  ...homeCtrl.items
+                      .asMap()
+                      .entries
+                      .map((e) => ProductLists(data: e.value))
+                      .toList()
+                ])
+              // Item Not Found Text
+              : const NoItemFound());
     });
   }
 }

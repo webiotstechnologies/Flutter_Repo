@@ -1,6 +1,4 @@
 import '../../config.dart';
-import '../../widgets/no_result_common.dart';
-
 
 class GridViewScreen extends StatelessWidget {
   const GridViewScreen({Key? key}) : super(key: key);
@@ -9,16 +7,13 @@ class GridViewScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(builder: (homeCtrl) {
       return SingleChildScrollView(
-          child: homeCtrl.items.isEmpty &&
-                  homeCtrl.searchController.text.isNotEmpty
-              ? const NoItemFound()
-              : Column(children: [
+          child: homeCtrl.items.isNotEmpty
+              // All Items In GridView
+              ? Column(children: [
                   GridView.builder(
                       scrollDirection: Axis.vertical,
                       physics: const NeverScrollableScrollPhysics(),
-                      itemCount: homeCtrl.items.isNotEmpty
-                          ? homeCtrl.items.length
-                          : homeCtrl.productList.length,
+                      itemCount: homeCtrl.items.length,
                       shrinkWrap: true,
                       gridDelegate:
                           const SliverGridDelegateWithMaxCrossAxisExtent(
@@ -28,12 +23,11 @@ class GridViewScreen extends StatelessWidget {
                               mainAxisSpacing: 1,
                               maxCrossAxisExtent: 200),
                       itemBuilder: (BuildContext context, i) {
-                        return GridviewList(
-                            data: homeCtrl.items.isNotEmpty
-                                ? homeCtrl.items[i]
-                                : homeCtrl.productList[i]);
+                        return GridviewList(data: homeCtrl.items[i]);
                       })
-                ]));
+                ])
+          // Item Not Found Text
+              : const NoItemFound());
     });
   }
 }

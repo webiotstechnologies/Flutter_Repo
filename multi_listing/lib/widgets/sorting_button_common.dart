@@ -10,8 +10,10 @@ class SortingButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(children: [
+      // Icon
       Icon(icon, size: Sizes.s18, color: appCtrl.appTheme.whiteColor)
           .paddingOnly(right: Insets.i10),
+      // Title Text
       Text(title!,
           style: AppCss.montserratSemiBold14
               .textColor(appCtrl.appTheme.whiteColor))

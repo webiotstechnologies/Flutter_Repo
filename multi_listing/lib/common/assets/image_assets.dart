@@ -39,6 +39,8 @@ class ImageAssets {
 
   final String pinkTShirtBoy = "assets/images/ptboy.jpg";
 
+  final String shoppingBag = "assets/images/shoppingbag.png";
+
 
 
 

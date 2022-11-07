@@ -6,7 +6,9 @@ class NoItemFound extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(children: [
+      // Icon
       const Icon(Icons.search_off),
+      // Item Not Found Text
       Text(appFonts.itemNotFound,
           style: AppCss.montserratSemiBold14)
     ]);

@@ -12,6 +12,7 @@ class ColorsCommon extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
+        // Color Container
         const SizedBox(
           height: 25,
           width: 25,
@@ -19,7 +20,8 @@ class ColorsCommon extends StatelessWidget {
             color: color,
             borderRadius: const BorderRadius.all(Radius.circular(AppRadius.r50))).inkWell(onTap: onTap),
         const VSpace(Sizes.s8),
-       selectIndex == index ? Container(height: 1,width: 30,color: appCtrl.appTheme.blackColor) : Container()
+       // Black Indicator
+        selectIndex == null ? Container() : selectIndex == index ? Container(height: 1,width: 30,color: appCtrl.appTheme.blackColor) : Container()
       ]
     );
   }

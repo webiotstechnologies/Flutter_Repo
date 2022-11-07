@@ -14,8 +14,14 @@ class FilterBottomSheetCommon extends StatelessWidget {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-            Text(appFonts.filter, style: AppCss.montserratSemiBold18)
-                .paddingOnly(bottom: Insets.i10),
+                    // Filter Text
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(appFonts.filter, style: AppCss.montserratSemiBold18),
+                Text(appFonts.reset,style: AppCss.montserratSemiBold18.textColor(appCtrl.appTheme.error)).inkWell(onTap: ()=> homeCtrl.onReset())
+              ],
+            ).paddingOnly(bottom: Insets.i10),
             const Divider(thickness: 2),
             // Gender Filter
             const GenderCommon(),

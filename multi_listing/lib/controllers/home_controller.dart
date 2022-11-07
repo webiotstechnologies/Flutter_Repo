@@ -1,110 +1,138 @@
-import 'dart:developer';
-
 import '../config.dart';
 
 class HomeController extends GetxController {
   TextEditingController searchController = TextEditingController();
   bool isShow = false;
-  int selectIndex = 0;
-  int sizeIndex = 0;
-  int colorIndex = 0;
-  List<dynamic> productList = appArray.listImages;
+  bool isPrice = false;
+  bool isSort = false;
+  int? selectIndex;
+  int? sizeIndex;
+  int? colorIndex;
+  List<dynamic> productList = [];
   List items = [];
   String gender = "";
   String size = "";
   String color = "";
 
+  // List And Grid Icon Change Method
   onChanges() {
     isShow = !isShow;
     update();
   }
 
+  // Gender Change Index
   onGenderChange(int index) {
     selectIndex = index;
     update();
   }
 
+  // Size Change Index
   onSizeChange(int index) {
     sizeIndex = index;
     update();
   }
 
+  // Color Change Index
   onColorChange(int index) {
     colorIndex = index;
     update();
   }
 
-  onFinal(value, gender, size, color, {bool his = false}) {
+  onReset() {
+    items = productList;
+    selectIndex = null;
+    sizeIndex = null;
+    colorIndex = null;
+    update();
+    Get.back();
+  }
+
+  // Filter Method
+  onFinal(value, gender, size, color, isSort,isLow) {
     items = [];
     update();
+
     for (var i = 0; i < productList.length; i++) {
-      if (productList[i]["title"].toString().toLowerCase().contains(value) &&
-          productList[i]["color"].toString().toLowerCase().contains(value) &&
-          (productList[i]["type"] == gender &&
-              productList[i]["size"] == size &&
-              productList[i]["color"] == color) &&
-          (his
-              ? productList[i].sort((a, b) => a["price"].compareTo(b["price"]))
-              : productList[i]
-                  .sort((a, b) => b["price"].compareTo(a["price"])))) {
+      if (value != null &&
+          value != "" &&
+          gender != "" &&
+          size != "" &&
+          color != "") {
+        if (productList[i]["title"].toString().toLowerCase().contains(value) &&
+            productList[i]["color"].toString().toLowerCase().contains(value) &&
+            (productList[i]["type"] == gender &&
+                productList[i]["size"] == size &&
+                productList[i]["color"] == color)) {
+          items.add(productList[i]);
+        }
+      } else if (value != null && value != "") {
+        if (productList[i]["title"].toString().toLowerCase().contains(value) &&
+            productList[i]["color"].toString().toLowerCase().contains(value)) {
+          items.add(productList[i]);
+        }
+      } else if (gender != "" && size != "" && color != "") {
+        if (productList[i]["type"] == gender &&
+            productList[i]["size"] == size &&
+            productList[i]["color"] == color) {
+          items.add(productList[i]);
+        }
+      } else if (size != "" && color != "") {
+        if (productList[i]["size"] == size &&
+            productList[i]["color"] == color) {
+          items.add(productList[i]);
+        }
+      } else if (size != "" && gender != "") {
+        if (productList[i]["size"] == size &&
+            productList[i]["type"] == gender) {
+          items.add(productList[i]);
+        }
+      } else if (color != "" && gender != "") {
+        if (productList[i]["color"] == color &&
+            productList[i]["type"] == gender) {
+          items.add(productList[i]);
+        }
+      } else if (size != "") {
+        if (productList[i]["size"] == size) {
+          items.add(productList[i]);
+        }
+      } else if (color != "") {
+        if (productList[i]["color"] == color) {
+          items.add(productList[i]);
+        }
+      } else if (gender != "") {
+        if (productList[i]["type"] == gender) {
+          items.add(productList[i]);
+        }
+      }/*if (isSort != "" && isSort != null && isSort == true) {
         items.add(productList[i]);
-      }
+        onSorting(isLow);
+      }*/
     }
+
     update();
   }
 
-  onLowToHigh(bool isLow) {
+  // Sorting Method
+  onSorting(bool isLow) {
+
     if (isLow == false) {
-      productList.sort((a, b) => a["price"].compareTo(b["price"]));
+      items.sort((a, b) => a["price"].compareTo(b["price"]));
       update();
+      Get.back();
     } else {
-      productList.sort((a, b) => b["price"].compareTo(a["price"]));
+      items.sort((a, b) => b["price"].compareTo(a["price"]));
       update();
+      Get.back();
     }
   }
 
-/*onHighToLow() {
-    productList.sort((a, b) => b["price"].compareTo(a["price"]));
+  // Save List Method
+  @override
+  void onReady() {
+    // TODO: implement onReady
+    productList = appCtrl.storage.read("productList");
+    items = productList;
     update();
-  }*/
-
-/* onMale() {
-    items = [];
-    List<dynamic> data = productList.where((element) {
-      return element["type"] == "male";
-    }).toList();
-
-    items = data;
-    update();
+    super.onReady();
   }
-
-  onFemale() {
-    items = [];
-    List<dynamic> data = productList.where((element) {
-      return element["type"] == "female";
-    }).toList();
-
-    items = data;
-    update();
-  }*/
-
-/* onSmallSize() {
-    items = [];
-    List<dynamic> data = productList.where((element) {
-      return element["size"] == "S";
-    }).toList();
-
-    items = data;
-    update();
-  }
-
-  onChangeColor() {
-    items = [];
-    List<dynamic> data = productList.where((element) {
-      return element["color"] == "blue";
-    }).toList();
-
-    items = data;
-    update();
-  }*/
 }

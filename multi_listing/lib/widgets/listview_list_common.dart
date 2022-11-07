@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import '../config.dart';
 
 class ProductLists extends StatelessWidget {
@@ -12,49 +11,38 @@ class ProductLists extends StatelessWidget {
             child: Column(children: [
       Row(children: [
         Stack(alignment: Alignment.topRight, children: [
+          // Image
           ClipRRect(
                   borderRadius:
                       const BorderRadius.all(Radius.circular(AppRadius.r20)),
                   child: Image.asset(data["image"],
                       height: Sizes.s140, fit: BoxFit.cover, width: Sizes.s120))
               .paddingAll(Insets.i10),
-          SizedBox(
-                  child: Icon(CupertinoIcons.heart_fill,
-                          color: appCtrl.appTheme.error, size: Sizes.s14)
-                      .paddingAll(Insets.i4)
-                      .decorated(
-                          color: appCtrl.appTheme.whiteColor,
-                          borderRadius: const BorderRadius.all(
-                              Radius.circular(AppRadius.r50))))
+          // Heart Icon
+          const HeartImageCommon()
               .paddingOnly(right: Insets.i18, top: Insets.i18)
         ]),
         const HSpace(Sizes.s10),
-        Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text(data["title"],
-                  style: AppCss.montserratSemiBold16
-                      .textColor(appCtrl.appTheme.indigo))
-              .paddingSymmetric(vertical: Insets.i5),
-          Text('Size: ${data["size"]}',
-              style: AppCss.montserratExtraBold11
-                  .textColor(appCtrl.appTheme.lightBlack)),
+        Column(crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+          // Title & Size Layout
+            TitleSizeCommon(title: data["title"],size: data["size"]),
           const VSpace(Sizes.s20),
+          // OutfitAwesome Text
           Text(appFonts.outfitIsAwesome,
               style: AppCss.montserratSemiBold14
                   .textColor(appCtrl.appTheme.lightBlack)),
           const VSpace(Sizes.s20),
-          Row(children: [
+          // Price
+          Row(
+              children: [
             Text("${appCtrl.priceSymbol}${data["price"].toString()}",
                 style: AppCss.montserratSemiBold20
                     .textColor(appCtrl.appTheme.indigo)),
             const HSpace(Sizes.s80),
-            Text(appFonts.buy,
-                    style: AppCss.montserratSemiBold14
-                        .textColor(appCtrl.appTheme.whiteColor))
-                .paddingSymmetric(horizontal: Insets.i18, vertical: Insets.i8)
-                .decorated(
-                    color: appCtrl.appTheme.indigo,
-                    borderRadius:
-                        const BorderRadius.all(Radius.circular(AppRadius.r20)))
+            // Buy Text
+                const BuyButtonCommon()
           ])
         ])
       ])
@@ -65,7 +53,7 @@ class ProductLists extends StatelessWidget {
               BoxShadow(
                   offset: const Offset(0, 3),
                   color: appCtrl.appTheme.indigoShade,
-                  blurRadius: 3)
+                  blurRadius: 2)
             ],
             borderRadius:
                 const BorderRadius.all(Radius.circular(AppRadius.r20)))

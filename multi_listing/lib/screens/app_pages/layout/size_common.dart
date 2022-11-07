@@ -10,9 +10,11 @@ class SizeCommon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
+      // Text
       Text(title!,style: AppCss.montserratSemiBold14).inkWell(onTap: onTap),
       const VSpace(Sizes.s8),
-     selectIndex == index ? Container(height: 1, width: 30, color: appCtrl.appTheme.blackColor) : Container()
+     // Indicator
+      selectIndex == null ? Container() : selectIndex == index ? Container(height: 1, width: 30, color: appCtrl.appTheme.blackColor) : Container()
     ]);
   }
 }
