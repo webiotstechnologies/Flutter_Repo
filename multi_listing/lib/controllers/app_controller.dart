@@ -1,29 +1,19 @@
-import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:multi_listing/widgets/filter_sheet_common.dart';
-import 'package:multi_listing/widgets/sorting_sheet_common.dart';
-
 import '../common/theme/app_theme.dart';
+import '../config.dart';
+
 
 class AppController extends GetxController {
   AppTheme _appTheme = AppTheme.fromType(ThemeType.light);
   final storage = GetStorage();
   AppTheme get appTheme => _appTheme;
-  int selectedIndex = 0;
   bool isTheme = false;
-  bool isRTL = false;
   String languageVal = "in";
-  int currVal = 1;
   String priceSymbol = "\$";
 
-  // Sorting BottomSheet
-  sortingBottomSheet (){
-    Get.bottomSheet(const SortingBottomSheetCommon());
-  }
 
-  // Filter BottomSheet
-  filterBottomSheet () {
-    Get.bottomSheet(const FilterBottomSheetCommon());
+  // Sorting & Filter BottomSheet
+  bottomSheet (bool isBottom){
+    Get.bottomSheet(isBottom == true ? const SortingBottomSheetCommon() : const FilterBottomSheetCommon());
   }
 
   //update theme

@@ -21,6 +21,10 @@ class AppFonts {
     final l = "L";
     final xl = "XL";
     final reset = "Reset";
+    final productDetail = "Product Detail";
+    final addToCart = "Add To Cart";
+    final description = "Description";
+    final rating = "4.9";
 
 
     final blackDenimJeans = "Black Denim Jeans";

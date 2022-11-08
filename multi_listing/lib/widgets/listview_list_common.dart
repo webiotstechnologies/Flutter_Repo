@@ -12,41 +12,40 @@ class ProductLists extends StatelessWidget {
       Row(children: [
         Stack(alignment: Alignment.topRight, children: [
           // Image
-          ClipRRect(
-                  borderRadius:
-                      const BorderRadius.all(Radius.circular(AppRadius.r20)),
-                  child: Image.asset(data["image"],
-                      height: Sizes.s140, fit: BoxFit.cover, width: Sizes.s120))
+          ImageCommon(
+                  title: data["image"], height: Sizes.s140, width: Sizes.s120)
               .paddingAll(Insets.i10),
           // Heart Icon
           const HeartImageCommon()
               .paddingOnly(right: Insets.i18, top: Insets.i18)
         ]),
         const HSpace(Sizes.s10),
-        Column(crossAxisAlignment: CrossAxisAlignment.start,
+        Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-          // Title & Size Layout
-            TitleSizeCommon(title: data["title"],size: data["size"]),
-          const VSpace(Sizes.s20),
-          // OutfitAwesome Text
-          Text(appFonts.outfitIsAwesome,
-              style: AppCss.montserratSemiBold14
-                  .textColor(appCtrl.appTheme.lightBlack)),
-          const VSpace(Sizes.s20),
-          // Price
-          Row(
-              children: [
-            Text("${appCtrl.priceSymbol}${data["price"].toString()}",
-                style: AppCss.montserratSemiBold20
-                    .textColor(appCtrl.appTheme.indigo)),
-            const HSpace(Sizes.s80),
-            // Buy Text
+              // Title & Size Layout
+              TitleSizeCommon(title: data["title"], size: data["size"]),
+              const VSpace(Sizes.s20),
+              // OutfitAwesome Text
+              Text(appFonts.outfitIsAwesome,
+                  style: AppCss.montserratSemiBold14
+                      .textColor(appCtrl.appTheme.lightBlack)),
+              const VSpace(Sizes.s20),
+              // Price
+              Row(children: [
+                Text("${appCtrl.priceSymbol}${data["price"].toString()}",
+                    style: AppCss.montserratSemiBold20
+                        .textColor(appCtrl.appTheme.indigo)),
+                const HSpace(Sizes.s80),
+                // Buy Text
                 const BuyButtonCommon()
-          ])
-        ])
+              ])
+            ])
       ])
-    ]))
+    ])).inkWell(onTap: (){
+      Get.toNamed(routeName.productDetailScreen,arguments: data);
+    })
         .decorated(
             color: appCtrl.appTheme.whiteColor,
             boxShadow: [

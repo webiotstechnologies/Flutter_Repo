@@ -1,6 +1,4 @@
-
 import '../config.dart';
-
 
 class GridviewList extends StatelessWidget {
   final dynamic data;
@@ -15,13 +13,8 @@ class GridviewList extends StatelessWidget {
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Stack(alignment: Alignment.topRight, children: [
                 // Image
-                ClipRRect(
-                        borderRadius: const BorderRadius.all(
-                            Radius.circular(AppRadius.r20)),
-                        child: Image.asset(data["image"],
-                            height: Sizes.s150,
-                            fit: BoxFit.cover,
-                            width: double.infinity))
+                ImageCommon(
+                    title: data["image"], height: Sizes.s150, width: Sizes.s150)
                     .paddingOnly(top: Insets.i10, bottom: Insets.i10),
                 // Heart Icon
                 const HeartImageCommon()
@@ -43,7 +36,9 @@ class GridviewList extends StatelessWidget {
                 // Buy Text
                 const BuyButtonCommon()
               ])
-            ]).paddingSymmetric(horizontal: Insets.i10))
+            ]).paddingSymmetric(horizontal: Insets.i10)).inkWell(onTap: (){
+      Get.toNamed(routeName.productDetailScreen,arguments: data);
+    })
         .decorated(
             color: appCtrl.appTheme.whiteColor,
             boxShadow: [

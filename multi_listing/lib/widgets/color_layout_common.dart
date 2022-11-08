@@ -17,8 +17,7 @@ class ColorLayoutCommon extends StatelessWidget {
             onTap: () {
               homeCtrl.color = "blue";
               homeCtrl.onColorChange(0);
-              homeCtrl.onFinal(homeCtrl.searchController.text, homeCtrl.gender,
-                  homeCtrl.size, "blue","","");
+              homeCtrl.onFinal(homeCtrl.searchController.text,  "", "");
               homeCtrl.update();
             }),
         // Pink Color
@@ -29,8 +28,7 @@ class ColorLayoutCommon extends StatelessWidget {
             onTap: () {
               homeCtrl.color = "pink";
               homeCtrl.onColorChange(1);
-              homeCtrl.onFinal(homeCtrl.searchController.text, homeCtrl.gender,
-                  homeCtrl.size, "pink","","");
+              homeCtrl.onFinal(homeCtrl.searchController.text, "", "");
               homeCtrl.update();
             }),
         // Black Color
@@ -41,10 +39,10 @@ class ColorLayoutCommon extends StatelessWidget {
             onTap: () {
               homeCtrl.color = "black";
               homeCtrl.onColorChange(2);
-              homeCtrl.onFinal(homeCtrl.searchController.text, homeCtrl.gender,
-                  homeCtrl.size, "black","","");
+              homeCtrl.onFinal(homeCtrl.searchController.text, "", "");
               homeCtrl.update();
             }),
+        // Yellow Color
         ColorsCommon(
             color: appCtrl.appTheme.themeColor,
             selectIndex: homeCtrl.colorIndex,
@@ -52,8 +50,7 @@ class ColorLayoutCommon extends StatelessWidget {
             onTap: () {
               homeCtrl.color = "yellow";
               homeCtrl.onColorChange(3);
-              homeCtrl.onFinal(homeCtrl.searchController.text, homeCtrl.gender,
-                  homeCtrl.size, "yellow","","");
+              homeCtrl.onFinal(homeCtrl.searchController.text, "", "");
               homeCtrl.update();
             }),
         // White Color
@@ -64,10 +61,9 @@ class ColorLayoutCommon extends StatelessWidget {
             onTap: () {
               homeCtrl.color = "white";
               homeCtrl.onColorChange(4);
-              homeCtrl.onFinal(homeCtrl.searchController.text, homeCtrl.gender,
-                  homeCtrl.size, "white","","");
+              homeCtrl.onFinal(homeCtrl.searchController.text,"", "");
               homeCtrl.update();
-            }),
+            })
       ]).paddingSymmetric(vertical: Insets.i15);
     });
   }

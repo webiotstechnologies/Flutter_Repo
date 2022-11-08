@@ -1,20 +1,17 @@
-import 'package:flutter/cupertino.dart';
-
 import '../config.dart';
 
-class HeartImageCommon extends StatelessWidget {
-  const HeartImageCommon({Key? key}) : super(key: key);
+class ImageCommon extends StatelessWidget {
+  final String? title;
+  final double? height;
+  final double? width;
+  const ImageCommon({Key? key,this.title,this.height,this.width}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        // Heat Icon
-        child: Icon(CupertinoIcons.heart_fill,
-                color: appCtrl.appTheme.error, size: Sizes.s14)
-            .paddingAll(Insets.i4)
-            .decorated(
-                color: appCtrl.appTheme.whiteColor,
-                borderRadius:
-                    const BorderRadius.all(Radius.circular(AppRadius.r50))));
+    return ClipRRect(
+        borderRadius:
+        const BorderRadius.all(Radius.circular(AppRadius.r20)),
+        child: Image.asset(title!,
+            height: height, fit: BoxFit.cover, width: width));
   }
 }

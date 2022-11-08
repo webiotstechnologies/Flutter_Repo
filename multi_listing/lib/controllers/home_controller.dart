@@ -10,6 +10,8 @@ class HomeController extends GetxController {
   int? colorIndex;
   List<dynamic> productList = [];
   List items = [];
+  List sizesList = [];
+  List gendersList = [];
   String gender = "";
   String size = "";
   String color = "";
@@ -38,17 +40,31 @@ class HomeController extends GetxController {
     update();
   }
 
+  // TextField onChange Method
+  onTextChange(value) {
+    if (value.length > 0) {
+      onFinal(value, "", "");
+    } else {
+      items =productList;
+     update();
+    }
+  }
+
+  // Reset Button
   onReset() {
     items = productList;
     selectIndex = null;
     sizeIndex = null;
     colorIndex = null;
+    gender = "";
+    size = "";
+    color = "";
     update();
     Get.back();
   }
 
   // Filter Method
-  onFinal(value, gender, size, color, isSort,isLow) {
+  onFinal(value, isSort,isLow) {
     items = [];
     update();
 
@@ -103,33 +119,40 @@ class HomeController extends GetxController {
         if (productList[i]["type"] == gender) {
           items.add(productList[i]);
         }
-      }/*if (isSort != "" && isSort != null && isSort == true) {
-        items.add(productList[i]);
-        onSorting(isLow);
-      }*/
+      }
     }
 
+    //when all filters variables are blank set all data in list
+    if(value == "" && gender == "" && size == "" && color == ""){
+      items = productList;
+    }
+
+    if (isSort != "" && isSort != null && isSort == true) {
+        onSorting(isLow);
+      }
     update();
   }
 
   // Sorting Method
   onSorting(bool isLow) {
-
     if (isLow == false) {
       items.sort((a, b) => a["price"].compareTo(b["price"]));
       update();
-      Get.back();
+
     } else {
       items.sort((a, b) => b["price"].compareTo(a["price"]));
       update();
-      Get.back();
     }
   }
 
-  // Save List Method
+
   @override
   void onReady() {
     // TODO: implement onReady
+
+    // Get Store Data In Storage
+    sizesList = appArray.sizeList;
+    gendersList = appArray.genderList;
     productList = appCtrl.storage.read("productList");
     items = productList;
     update();

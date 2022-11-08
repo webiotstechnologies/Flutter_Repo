@@ -4,7 +4,6 @@ class SortingButton extends StatelessWidget {
   final IconData? icon;
   final String? title;
 
-
   const SortingButton({Key? key, this.title, this.icon}) : super(key: key);
 
   @override

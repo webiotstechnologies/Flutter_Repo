@@ -26,6 +26,7 @@ class AppCss {
   //Text Style montserrat extra bold
   static TextStyle get montserratExtraBold65 => montserrat.extraThickBold.size(FontSizes.f65);
   static TextStyle get montserratExtraBold15 => montserrat.extraThickBold.size(FontSizes.f14);
+  static TextStyle get montserratExtraBold16 => montserrat.extraThickBold.size(FontSizes.f16);
 
 
   static TextStyle get montserratBlack65 => montserrat.black.size(FontSizes.f65);
@@ -49,6 +50,7 @@ class AppCss {
   static TextStyle get montserratSemiBold11=> montserrat.semiBold.size(FontSizes.f11);
   static TextStyle get montserratSemiBold12=> montserrat.semiBold.size(FontSizes.f12);
   static TextStyle get montserratSemiBold20=> montserrat.semiBold.size(FontSizes.f20);
+  static TextStyle get montserratSemiBold8=> montserrat.semiBold.size(FontSizes.f8);
 
   //Text Style montserrat medium
   static TextStyle get montserratMedium28 => montserrat.medium.size(FontSizes.f28);

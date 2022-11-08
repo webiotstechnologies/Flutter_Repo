@@ -6,7 +6,7 @@ class BuyButtonCommon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return
-      // Buy Text
+      // Buy Button List
       Text(appFonts.buy,
         style: AppCss.montserratSemiBold14
             .textColor(appCtrl.appTheme.whiteColor))
@@ -15,6 +15,6 @@ class BuyButtonCommon extends StatelessWidget {
         .decorated(
         color: appCtrl.appTheme.indigo,
         borderRadius: const BorderRadius.all(
-            Radius.circular(AppRadius.r20)));
+            Radius.circular(AppRadius.r20))).marginOnly(right: Insets.i10);
   }
 }

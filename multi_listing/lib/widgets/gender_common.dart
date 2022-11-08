@@ -10,28 +10,17 @@ class GenderCommon extends StatelessWidget {
         return Row(children: [
           // Gender Text
           Text(appFonts.gender, style: AppCss.montserratSemiBold16),
-          // Male Gender
-          SizeCommon(
-              title: appFonts.male,
-              index: 0,
+          // All Gender In Map
+          ...homeCtrl.gendersList.asMap().entries.map((e) => SizeCommon(
+              title: "${e.value["gender"][0].toUpperCase()}${e.value["gender"].substring(1).toLowerCase()}",
+              index: e.key,
               selectIndex: homeCtrl.selectIndex,
               onTap: () {
-                homeCtrl.gender = "male";
-                homeCtrl.onGenderChange(0);
-                homeCtrl.onFinal(homeCtrl.searchController.text, "male",homeCtrl.size,homeCtrl.color,'',"");
+                homeCtrl.gender = e.value["gender"];
+                homeCtrl.onGenderChange(e.key);
+                homeCtrl.onFinal(homeCtrl.searchController.text,'',"");
                 homeCtrl.update();
-              }).paddingSymmetric(horizontal: Insets.i80),
-          // Female Gender
-          SizeCommon(
-              title: appFonts.female,
-              index: 1,
-              selectIndex: homeCtrl.selectIndex,
-              onTap: () {
-                homeCtrl.gender = "female";
-                homeCtrl.onGenderChange(1);
-                homeCtrl.onFinal(homeCtrl.searchController.text, "female",homeCtrl.size,homeCtrl.color,"","");
-                homeCtrl.update();
-              })
+              }).paddingSymmetric(horizontal: Insets.i30)).toList(),
         ]).paddingSymmetric(vertical: Insets.i15);
       }
     );

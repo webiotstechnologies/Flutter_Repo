@@ -10,50 +10,17 @@ class SizeLayoutCommon extends StatelessWidget {
         return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           // Size Text
           Text(appFonts.size2, style: AppCss.montserratSemiBold16),
-          // S Text
-          SizeCommon(
-              title: appFonts.s,
-              selectIndex: homeCtrl.sizeIndex,
-              index: 0,
-              onTap: () {
-                homeCtrl.size = "S";
-                homeCtrl.onSizeChange(0);
-                homeCtrl.onFinal(homeCtrl.searchController.text, homeCtrl.gender, "S",homeCtrl.color,"","");
-                homeCtrl.update();
-              }),
-          // L Text
-          SizeCommon(
-              title: appFonts.l,
-              selectIndex: homeCtrl.sizeIndex,
-              index: 1,
-              onTap: () {
-                homeCtrl.size = "L";
-                homeCtrl.onSizeChange(1);
-                homeCtrl.onFinal(homeCtrl.searchController.text, homeCtrl.gender, "L",homeCtrl.color,"","");
-                homeCtrl.update();
-              }),
-          // M Text
-          SizeCommon(
-              title: appFonts.m,
-              selectIndex: homeCtrl.sizeIndex,
-              index: 2,
-              onTap: () {
-                homeCtrl.size = "M";
-                homeCtrl.onSizeChange(2);
-                homeCtrl.onFinal(homeCtrl.searchController.text,  homeCtrl.gender, "M",homeCtrl.color,"","");
-                homeCtrl.update();
-              }),
-          // XL Text
-          SizeCommon(
-              title: appFonts.xl,
-              selectIndex: homeCtrl.sizeIndex,
-              index: 3,
-              onTap: () {
-                homeCtrl.size = "XL";
-                homeCtrl.onSizeChange(3);
-                homeCtrl.onFinal(homeCtrl.searchController.text, homeCtrl.gender, "XL",homeCtrl.color,"","");
-                homeCtrl.update();
-              }),
+              // All Sizes In Map
+            ...homeCtrl.sizesList.asMap().entries.map((e) => SizeCommon(
+                title: e.value["size"],
+                selectIndex: homeCtrl.sizeIndex,
+                index: e.key,
+                onTap: () {
+                  homeCtrl.size = e.value["size"];
+                  homeCtrl.onSizeChange(e.key);
+                  homeCtrl.onFinal(homeCtrl.searchController.text,"","");
+                  homeCtrl.update();
+                }),).toList(),
         ]).paddingSymmetric(vertical: Insets.i15);
       }
     );

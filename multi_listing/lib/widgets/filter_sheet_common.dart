@@ -1,8 +1,4 @@
-import 'package:multi_listing/widgets/size_layout_common.dart';
-
 import '../config.dart';
-import 'color_layout_common.dart';
-import 'gender_common.dart';
 
 class FilterBottomSheetCommon extends StatelessWidget {
   const FilterBottomSheetCommon({Key? key}) : super(key: key);
@@ -14,12 +10,15 @@ class FilterBottomSheetCommon extends StatelessWidget {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Filter Text
+            // Filter Text
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(appFonts.filter, style: AppCss.montserratSemiBold18),
-                Text(appFonts.reset,style: AppCss.montserratSemiBold18.textColor(appCtrl.appTheme.error)).inkWell(onTap: ()=> homeCtrl.onReset())
+                Text(appFonts.reset,
+                        style: AppCss.montserratSemiBold18
+                            .textColor(appCtrl.appTheme.error))
+                    .inkWell(onTap: () => homeCtrl.onReset())
               ],
             ).paddingOnly(bottom: Insets.i10),
             const Divider(thickness: 2),

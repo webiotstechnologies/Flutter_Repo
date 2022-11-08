@@ -14,7 +14,7 @@ class ListViewScreen extends StatelessWidget {
                   ...homeCtrl.items
                       .asMap()
                       .entries
-                      .map((e) => ProductLists(data: e.value))
+                      .map((e) => ProductLists(data: e.value).fittedBox())
                       .toList()
                 ])
               // Item Not Found Text
