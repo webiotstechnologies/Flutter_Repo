@@ -17,6 +17,10 @@ export 'package:multi_picker/widgets/bottom_sheet_common.dart';
 export 'package:get/get.dart';
 export 'package:multi_picker/widgets/image_sheet_common.dart';
 export 'package:multi_picker/widgets/video_sheet_common.dart';
+export 'package:video_player/video_player.dart';
+export '../../widgets/elevated_button_common.dart';
+export 'package:audioplayers/audioplayers.dart';
+
 
 final appCtrl = Get.isRegistered<AppController>()
     ? Get.find<AppController>()

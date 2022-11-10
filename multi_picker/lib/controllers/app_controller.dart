@@ -1,6 +1,10 @@
-
 import '../common/theme/app_theme.dart';
 import '../config.dart';
+import '../widgets/date_common.dart';
+import '../widgets/date_time_common.dart';
+import '../widgets/date_time_sheet_common.dart';
+import '../widgets/time_common.dart';
+
 
 class AppController extends GetxController {
   AppTheme _appTheme = AppTheme.fromType(ThemeType.light);
@@ -12,6 +16,18 @@ class AppController extends GetxController {
 
   onBottomSheetOpen (bool isBottom) {
         Get.bottomSheet(isBottom == true ? const ImageBottomSheet() : const VideoBottomSheet());
+  }
+
+  onDateTimeSelect () {
+    Get.bottomSheet(const DateTimePicker());
+  }
+
+  onDateSelect () {
+    Get.bottomSheet(const DatePicker());
+  }
+
+  onTimeSelect () {
+    Get.bottomSheet(const TimePicker());
   }
 
   //update theme

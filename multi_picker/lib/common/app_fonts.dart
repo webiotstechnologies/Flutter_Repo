@@ -8,4 +8,8 @@ class AppFonts {
    final chooseVideo = "Choose Video";
    final video = "Video";
    final cameraVideo = "Camera Video";
+   final pickDateTime = "Pick Date & Time";
+   final pickDate = "Pick Date";
+   final pickTime = "Pick Time";
+   final ok = "Ok";
 }

@@ -1,7 +1,4 @@
 import 'package:multi_picker/config.dart';
-import 'package:video_player/video_player.dart';
-
-import '../../widgets/elevated_button_common.dart';
 
 class HomeScreen extends StatelessWidget {
   final homeCtrl = Get.put(HomeController());
@@ -19,29 +16,82 @@ class HomeScreen extends StatelessWidget {
               title: Text(appFonts.multiPicker,
                   style: AppCss.montserratExtraBold18)),
           body: SingleChildScrollView(
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-              // Pick Image Button
-                  ElevatedButtonCommon(title: appFonts.pickImage,onPressed: ()=> appCtrl.onBottomSheetOpen(true)),
-                  ElevatedButtonCommon(title: appFonts.pickVideo,onPressed: ()=> appCtrl.onBottomSheetOpen(false)),
-              homeCtrl.video != null ?
-                // Selected Image
-                Container(
-                  child: homeCtrl.videoPlayerController!.value.isInitialized
-                      ? AspectRatio(
-                    aspectRatio: homeCtrl.videoPlayerController!.value.aspectRatio,
-                    child: VideoPlayer(homeCtrl.videoPlayerController!),
-                  )
-                      : const CircularProgressIndicator(),
-                ) : homeCtrl.image != null ? SizedBox(
-                       height: 200,
-                width: 200,
-                child: Image.file(homeCtrl.image!,fit: BoxFit.cover),
-              ) : Container()
-            ] ),
-          )
-      );
+              child: Center(
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                // Pick Image Button
+                ElevatedButtonCommon(
+                    title: appFonts.pickImage,
+                    onPressed: () => appCtrl.onBottomSheetOpen(true)),
+                ElevatedButtonCommon(
+                    title: appFonts.pickVideo,
+                    onPressed: () => appCtrl.onBottomSheetOpen(false)),
+                ElevatedButtonCommon(
+                    title: appFonts.pickDateTime,
+                    onPressed: () => appCtrl.onDateTimeSelect()),
+                Text(homeCtrl.dateTime != null
+                    ? '${homeCtrl.dateTime?.month}-${homeCtrl.dateTime?.day}-${homeCtrl.dateTime?.year} ${homeCtrl.dateTime?.hour}:${homeCtrl.dateTime?.minute}'
+                    : "Pick Date And Time!"),
+
+                        ElevatedButtonCommon(
+                            title: appFonts.pickDate,
+                            onPressed: () => appCtrl.onDateSelect()),
+                        Text(homeCtrl.date != null
+                            ? '${homeCtrl.date?.month}-${homeCtrl.date?.day}-${homeCtrl.date?.year}'
+                            : "Pick Date!"),
+
+                        ElevatedButtonCommon(
+                            title: appFonts.pickTime,
+                            onPressed: () => appCtrl.onTimeSelect()),
+                        Text(homeCtrl.time != null
+                            ? '${homeCtrl.time?.hour}:${homeCtrl.time?.minute}'
+                            : "Pick Time!"),
+
+
+                        ElevatedButtonCommon(
+                            title: "Start Playing",
+                            onPressed: () => homeCtrl.playAudioFromLocalStorage()),
+                        if(homeCtrl.file != null)
+                         Text(homeCtrl.file!.path),
+                        if(homeCtrl.file != null)
+                        ElevatedButtonCommon(
+                            title: "Pause",
+                            onPressed: () => homeCtrl.pauseAudio()),
+                        if(homeCtrl.file != null)
+                        ElevatedButtonCommon(
+                            title: "Stop",
+                            onPressed: () => homeCtrl.stopAudio()),
+                        if(homeCtrl.file != null)
+                        ElevatedButtonCommon(
+                            title: "Resume",
+                            onPressed: () => homeCtrl.resumeAudio()),
+
+                        homeCtrl.video != null
+                    ? Container(
+                        child: homeCtrl.videoPlayerController!.value.isInitialized
+                            ? AspectRatio(
+                                aspectRatio: homeCtrl
+                                    .videoPlayerController!.value.aspectRatio,
+                                child: VideoPlayer(
+                                    homeCtrl.videoPlayerController!))
+                            : Container())
+                    : homeCtrl.camera != null
+                        ? Container(
+                            child: homeCtrl.cameraVideoPlayerController!.value
+                                    .isInitialized
+                                ? AspectRatio(
+                                    aspectRatio: homeCtrl
+                                        .cameraVideoPlayerController!
+                                        .value
+                                        .aspectRatio,
+                                    child: VideoPlayer(
+                                        homeCtrl.cameraVideoPlayerController!))
+                                : Container())
+                        : homeCtrl.image != null
+                            ? Image.file(homeCtrl.image!, fit: BoxFit.cover)
+                            : Container(),
+              ]))));
     });
   }
 }
