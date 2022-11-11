@@ -1,5 +1,8 @@
 import 'dart:io';
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter_sound/flutter_sound.dart';
+import 'package:just_audio/just_audio.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 import '../config.dart';
 
@@ -9,6 +12,14 @@ class HomeController extends GetxController {
   ImagePicker picker = ImagePicker();
   bool isPlaying = false;
   AudioPlayer? audioPlayer = AudioPlayer();
+  FlutterSoundRecorder recorder = FlutterSoundRecorder();
+  bool isRecorderReady = false;
+
+  double currentPositionInSeconds = 0;
+  double songDurationInSeconds = 0;
+  String currentPosition = "0:0:0";
+  String songDuration = "0:0:0";
+
 
   DateTime? date;
   DateTime? time;
@@ -19,6 +30,45 @@ class HomeController extends GetxController {
   File? video;
   File? camera;
   File? file;
+
+
+  record() async{
+    if(!isRecorderReady) return;
+      await recorder.startRecorder(toFile: "Codec.mp3");
+      update();
+  }
+
+  Future stopRecording () async{
+    if(!isRecorderReady) return;
+    final path = await recorder.stopRecorder();
+    final audioFile = File(path!);
+    print("Recorded Audio Path: $audioFile");
+    update();
+  }
+
+  recorderPermission () async{
+    final status = await Permission.microphone.request();
+    if(status != PermissionStatus.granted){
+      throw "Permission Not granted";
+    }
+    await recorder.openRecorder();
+    isRecorderReady = true;
+    recorder.setSubscriptionDuration(const Duration(microseconds: 500));
+    update();
+  }
+
+ /* String formatTime (Duration duration) {
+           String towDigits (int n)=> n.toString().padLeft(2,'0');
+           final hours = towDigits(duration.inHours);
+           final minutes = towDigits(duration.inMinutes.remainder(60));
+           final seconds = towDigits(duration.inSeconds.remainder(60));
+
+           return [
+             if (duration.inHours > 0) hours,
+             minutes,
+             seconds,
+           ].join(":");
+  }*/
 
 
   // Get Image from Gallery & Camera Method
@@ -57,40 +107,24 @@ class HomeController extends GetxController {
   playAudioFromLocalStorage() async {
 
      final result = await FilePicker.platform.pickFiles(type: FileType.audio);
-
-       if(result != null) {
-         file = File(result.files.single.path!);
-         audioPlayer?.play(file!.path.toString(),isLocal: true);
-         print("File: $file");
-       }
-      update();
-
+         if(result != null) {
+           file = File(result.files.single.path!);
+           await audioPlayer?.setUrl(file!.path);
+           audioPlayer?.play();
+           update();
+         }
   }
   pauseAudio() async{
-    int? result = await audioPlayer!.pause() ;
-     if(result == 1) {
-       print("pause success");
-     }
+
+    await audioPlayer?.pause() ;
      update();
   }
   stopAudio() async {
-    int? result = await audioPlayer!.stop();
-    if(result == 1) {
-      print("stop success");
-    } else {
-      print("error While Stopping");
-    }
+
+    await audioPlayer?.stop();
     update();
   }
-  resumeAudio() async {
-    int? result = await audioPlayer!.resume();
-    if(result == 1) {
-      print("resume success");
-    } else {
-      print("error While Resume");
-    }
-    update();
-  }
+
 
 
   onDateTimeChange (val) {
@@ -108,6 +142,36 @@ class HomeController extends GetxController {
      update();
   }
 
+  @override
+  void onReady() {
+    recorderPermission();
+   /* audioPlayer?.playerStateStream.listen((state) {
+
+    });*/
+     /* songDuration = playing!.audio.duration.toString().split(".")[0];
+      songDurationInSeconds = playing.audio.duration.inSeconds.toDouble();*/
+     audioPlayer?.positionStream.listen((playing) {
+       songDuration = playing.toString().split(".")[0];
+       songDurationInSeconds = playing.inSeconds.toDouble();
+       /*print("songDuration: $songDuration");
+       print("songDurationSecond: $songDurationInSeconds");*/
+       update();
+     });
+
+
+    audioPlayer?.durationStream.listen((duration) {
+      currentPosition = duration.toString().split(".")[0];
+      currentPositionInSeconds = duration!.inSeconds.toDouble();
+      /*print("songPosition: $currentPosition");
+      print("songPositionSecond: $currentPositionInSeconds");*/
+      update();
+    });
+
+     update();
+
+    // TODO: implement onReady
+    super.onReady();
+  }
 
 
  @override

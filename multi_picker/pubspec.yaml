@@ -38,8 +38,10 @@ dependencies:
   google_fonts: ^3.0.1
   image_picker: ^0.8.6
   video_player: ^2.4.7
-  audioplayers: ^0.19.1
+  just_audio: ^0.9.30
   file_picker: ^5.2.2
+  permission_handler: ^10.2.0
+  flutter_sound: ^9.2.13
 
 dev_dependencies:
   flutter_test:
