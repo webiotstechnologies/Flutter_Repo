@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter_sound/flutter_sound.dart';
@@ -20,6 +21,11 @@ class HomeController extends GetxController {
   String currentPosition = "0:0:0";
   String songDuration = "0:0:0";
 
+  Codec codec = Codec.aacMP4;
+  String mPath = '/Download/tau_file.mp4';
+
+
+
 
   DateTime? date;
   DateTime? time;
@@ -32,17 +38,45 @@ class HomeController extends GetxController {
   File? file;
 
 
+  String recordingTime = '0:0'; // to store value
+  bool isRecording = false;
+
+  void recordTime() {
+    var startTime = DateTime.now();
+    Timer.periodic(const Duration(seconds: 1), (Timer t) {
+      var diff = DateTime.now().difference(startTime);
+
+      recordingTime =
+      '${diff.inHours < 60 ? diff.inHours : 0}:${diff.inMinutes < 60 ? diff.inMinutes : 0}:${diff.inSeconds < 60 ? diff.inSeconds : 0}';
+
+      print(recordingTime);
+
+      if (!isRecording) {
+        t.cancel(); //cancel function calling
+      }
+     update();
+    });
+  }
+
+
+
+
+
+
   record() async{
     if(!isRecorderReady) return;
-      await recorder.startRecorder(toFile: "Codec.mp3");
+      await recorder.startRecorder(toFile: "temp");
       update();
   }
 
-  Future stopRecording () async{
+    stopRecording () async{
+
     if(!isRecorderReady) return;
     final path = await recorder.stopRecorder();
+    print('path: $path');
     final audioFile = File(path!);
     print("Recorded Audio Path: $audioFile");
+    print(File(path));
     update();
   }
 
@@ -146,8 +180,9 @@ class HomeController extends GetxController {
   void onReady() {
     recorderPermission();
    /* audioPlayer?.playerStateStream.listen((state) {
-
     });*/
+
+
      /* songDuration = playing!.audio.duration.toString().split(".")[0];
       songDurationInSeconds = playing.audio.duration.inSeconds.toDouble();*/
      audioPlayer?.positionStream.listen((playing) {

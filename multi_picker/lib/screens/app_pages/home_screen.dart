@@ -1,4 +1,3 @@
-import 'package:flutter_sound/flutter_sound.dart';
 import 'package:multi_picker/config.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -90,7 +89,7 @@ class HomeScreen extends StatelessWidget {
                   ElevatedButtonCommon(
                       title: "Stop", onPressed: () => homeCtrl.stopAudio()),
 
-                StreamBuilder<RecordingDisposition>(
+                /*StreamBuilder<RecordingDisposition>(
                     stream: homeCtrl.recorder.onProgress,
                     builder: (context, snapshot) {
                       final duration = snapshot.hasData
@@ -101,8 +100,10 @@ class HomeScreen extends StatelessWidget {
                       final minutes = towDigits(duration.inMinutes.remainder(60));
                       final seconds = towDigits(duration.inSeconds.remainder(60));
 
-                      return Text("$minutes : $seconds");
-                    }),
+                      return Text("$duration : $seconds");
+                    }),*/
+
+                        Text(homeCtrl.recorder.isRecording ? "Recording In Progress" : "Recorder  Is Stopped"),
 
                 IconButton(
                     onPressed: () async {
