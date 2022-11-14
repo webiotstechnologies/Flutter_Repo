@@ -11,10 +11,10 @@ class VideoBottomSheet extends StatelessWidget {
           title: appFonts.chooseVideo,
           firstImage: eImageAssets.gallery,
           firstName: appFonts.gallery,
-          fistOnTap: () => homeCtrl.pickVideo(),
+          fistOnTap: () => homeCtrl.pickVideo(ImageSource.gallery),
           secondImage: eImageAssets.camera,
           secondName: appFonts.camera,
-          secondOnTap: () => homeCtrl.pickVideoCamera());
+          secondOnTap: () => homeCtrl.pickVideo(ImageSource.camera));
     });
   }
 }

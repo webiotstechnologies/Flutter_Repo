@@ -19,7 +19,13 @@ export 'package:multi_picker/widgets/image_sheet_common.dart';
 export 'package:multi_picker/widgets/video_sheet_common.dart';
 export 'package:video_player/video_player.dart';
 export '../../widgets/elevated_button_common.dart';
-
+export 'package:file_picker/file_picker.dart';
+export 'package:flutter_sound/flutter_sound.dart';
+export 'package:permission_handler/permission_handler.dart';
+export '../screens/image_page/image_screen.dart';
+export '../screens/video_page/video_screen.dart';
+export 'package:multi_picker/controllers/video_controller.dart';
+export '../screens/audio_page/audio_screen.dart';
 
 
 final appCtrl = Get.isRegistered<AppController>()

@@ -1,4 +1,5 @@
 import 'package:multi_picker/config.dart';
+import 'package:multi_picker/routs/index.dart';
 
 class HomeScreen extends StatelessWidget {
   final homeCtrl = Get.put(HomeController());
@@ -30,27 +31,27 @@ class HomeScreen extends StatelessWidget {
                 ElevatedButtonCommon(
                     title: appFonts.pickDateTime,
                     onPressed: () => appCtrl.onDateTimeSelect()),
-                Text(homeCtrl.dateTime != null
-                    ? '${homeCtrl.dateTime?.month}-${homeCtrl.dateTime?.day}-${homeCtrl.dateTime?.year} ${homeCtrl.dateTime?.hour}:${homeCtrl.dateTime?.minute}'
-                    : "Pick Date And Time!"),
+
+                if (homeCtrl.dateTime != null)
+                  Text(
+                      '${homeCtrl.dateTime?.month}-${homeCtrl.dateTime?.day}-${homeCtrl.dateTime?.year} ${homeCtrl.dateTime?.hour}:${homeCtrl.dateTime?.minute}'),
 
                 ElevatedButtonCommon(
                     title: appFonts.pickDate,
                     onPressed: () => appCtrl.onDateSelect()),
-                Text(homeCtrl.date != null
-                    ? '${homeCtrl.date?.month}-${homeCtrl.date?.day}-${homeCtrl.date?.year}'
-                    : "Pick Date!"),
+                if(homeCtrl.date != null)
+                Text('${homeCtrl.date?.month}-${homeCtrl.date?.day}-${homeCtrl.date?.year}'),
 
                 ElevatedButtonCommon(
                     title: appFonts.pickTime,
                     onPressed: () => appCtrl.onTimeSelect()),
-                Text(homeCtrl.time != null
-                    ? '${homeCtrl.time?.hour}:${homeCtrl.time?.minute}'
-                    : "Pick Time!"),
+
+                if(homeCtrl.time != null)
+                Text('${homeCtrl.time?.hour}:${homeCtrl.time?.minute}'),
 
                 ElevatedButtonCommon(
-                    title: "Start Playing",
-                    onPressed: () => homeCtrl.playAudioFromLocalStorage()),
+                    title: "Media Player",
+                    onPressed: () => Get.toNamed(routeName.audioScreen)),
 
                 Slider(
                     value: homeCtrl.songDurationInSeconds,
@@ -103,7 +104,7 @@ class HomeScreen extends StatelessWidget {
                       return Text("$duration : $seconds");
                     }),*/
 
-                        Text(homeCtrl.recorder.isRecording ? "Recording In Progress" : "Recorder  Is Stopped"),
+                /* Text(homeCtrl.recorder.isRecording ? "Recording In Progress" : "Recorder  Is Stopped"),
 
                 IconButton(
                     onPressed: () async {
@@ -116,9 +117,68 @@ class HomeScreen extends StatelessWidget {
                     },
                     icon: homeCtrl.recorder.isRecording
                         ? const Icon(Icons.stop_circle)
-                        : const Icon(Icons.mic_rounded)),
+                        : const Icon(Icons.mic_rounded)),*/
 
-                homeCtrl.video != null
+                Container(
+                  margin: const EdgeInsets.all(3),
+                  padding: const EdgeInsets.all(3),
+                  height: 80,
+                  width: double.infinity,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: Color(0xFFFAF0E6),
+                    border: Border.all(
+                      color: Colors.indigo,
+                      width: 3,
+                    ),
+                  ),
+                  child: Row(children: [
+                    ElevatedButton(
+                      onPressed: homeCtrl.getRecorderFn(),
+                      //color: Colors.white,
+                      //disabledColor: Colors.grey,
+                      child: Text(
+                          homeCtrl.mRecorder!.isRecording ? 'Stop' : 'Record'),
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Text(homeCtrl.mRecorder!.isRecording
+                        ? 'Recording in progress'
+                        : 'Recorder is stopped'),
+                  ]),
+                ),
+                Container(
+                  margin: const EdgeInsets.all(3),
+                  padding: const EdgeInsets.all(3),
+                  height: 80,
+                  width: double.infinity,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: Color(0xFFFAF0E6),
+                    border: Border.all(
+                      color: Colors.indigo,
+                      width: 3,
+                    ),
+                  ),
+                  child: Row(children: [
+                    ElevatedButton(
+                      onPressed: homeCtrl.getPlaybackFn(),
+                      //color: Colors.white,
+                      //disabledColor: Colors.grey,
+                      child:
+                          Text(homeCtrl.mPlayer!.isPlaying ? 'Stop' : 'Play'),
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Text(homeCtrl.mPlayer!.isPlaying
+                        ? 'Playback in progress'
+                        : 'Player is stopped'),
+                  ]),
+                ),
+
+                /*homeCtrl.video != null
                     ? Container(
                         child: homeCtrl.videoPlayerController!.value.isInitialized
                             ? AspectRatio(
@@ -126,8 +186,8 @@ class HomeScreen extends StatelessWidget {
                                     .videoPlayerController!.value.aspectRatio,
                                 child: VideoPlayer(
                                     homeCtrl.videoPlayerController!))
-                            : Container())
-                    : homeCtrl.camera != null
+                            : Container())*/
+                /*: homeCtrl.camera != null
                         ? Container(
                             child: homeCtrl.cameraVideoPlayerController!.value
                                     .isInitialized
@@ -138,10 +198,8 @@ class HomeScreen extends StatelessWidget {
                                         .aspectRatio,
                                     child: VideoPlayer(
                                         homeCtrl.cameraVideoPlayerController!))
-                                : Container())
-                        : homeCtrl.image != null
-                            ? Image.file(homeCtrl.image!, fit: BoxFit.cover)
-                            : Container(),
+                                : Container())*/
+                /*  : Container(),*/
               ]))));
     });
   }
