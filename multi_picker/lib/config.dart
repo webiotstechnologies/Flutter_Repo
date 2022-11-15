@@ -2,11 +2,11 @@ import 'package:get/get.dart';
 import 'common/app_fonts.dart';
 import 'controllers/app_controller.dart';
 export 'package:get/get_navigation/src/routes/get_route.dart';
-export 'package:multi_picker/routs/rout_name.dart';
+export 'package:multi_picker/routes/rout_name.dart';
 export 'package:multi_picker/screens/app_pages/home_screen.dart';
 export 'package:flutter/material.dart';
 export 'package:multi_picker/common/theme/app_css.dart';
-export 'package:multi_picker/routs/rout_method.dart';
+export 'package:multi_picker/routes/rout_method.dart';
 export 'package:get/get_navigation/src/root/get_material_app.dart';
 export 'package:get/get.dart';
 export 'package:multi_picker/controllers/home_controller.dart';
@@ -26,6 +26,16 @@ export '../screens/image_page/image_screen.dart';
 export '../screens/video_page/video_screen.dart';
 export 'package:multi_picker/controllers/video_controller.dart';
 export '../screens/audio_page/audio_screen.dart';
+export '../screens/recording_page/recording_screen.dart';
+export 'package:multi_picker/common/extension/spacing.dart';
+export '../../widgets/recording_button_common.dart';
+export 'package:multi_picker/routes/index.dart';
+export '../../widgets/button_common.dart';
+export 'package:multi_picker/widgets/media_button_layout.dart';
+export '../../widgets/timer_button_common.dart';
+export '../../widgets/date_time_sheet_common.dart';
+
+
 
 
 final appCtrl = Get.isRegistered<AppController>()

@@ -12,19 +12,22 @@ class AppController extends GetxController {
   String languageVal = "in";
   String priceSymbol = "\$";
 
-
+ // Image & Video Open BottomSheet
   onBottomSheetOpen (bool isBottom) {
         Get.bottomSheet(isBottom == true ? const ImageBottomSheet() : const VideoBottomSheet());
   }
 
+  // Date Time Picker BottomSheet
   onDateTimeSelect () {
     Get.bottomSheet(const DateTimePicker());
   }
 
+  // Date Picker BottomSheet
   onDateSelect () {
     Get.bottomSheet(const DatePicker());
   }
 
+  // Time Picker BottomSheet
   onTimeSelect () {
     Get.bottomSheet(const TimePicker());
   }

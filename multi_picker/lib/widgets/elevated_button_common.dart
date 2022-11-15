@@ -7,11 +7,12 @@ class ElevatedButtonCommon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Elevated Button
     return ElevatedButton(
         style: ElevatedButton.styleFrom(
             backgroundColor: appCtrl.appTheme.indigo),
         onPressed: onPressed,
         child: Text(title!,
-            style: AppCss.montserratSemiBold16));
+            style: AppCss.montserratSemiBold14));
   }
 }

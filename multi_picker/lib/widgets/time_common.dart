@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import '../config.dart';
-import 'date_time_sheet_common.dart';
 
 class TimePicker extends StatelessWidget {
   const TimePicker({Key? key}) : super(key: key);
@@ -8,10 +7,10 @@ class TimePicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(builder: (homeCtrl) {
+      // Select Time BottomSheet
       return DateTimePickerSheetCommon(
-        mode: CupertinoDatePickerMode.time,
-        onDateTimeChanged: (val) => homeCtrl.onTimeChange(val),
-      );
+          mode: CupertinoDatePickerMode.time,
+          onDateTimeChanged: (val) => homeCtrl.onTimeChange(val));
     });
   }
 }

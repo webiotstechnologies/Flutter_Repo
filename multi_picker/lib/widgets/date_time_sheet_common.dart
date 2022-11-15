@@ -12,6 +12,7 @@ class DateTimePickerSheetCommon extends StatelessWidget {
       return Container(
           color: appCtrl.appTheme.greyShade,
           child: Column(children: [
+            // CupertinoDatePicker Common
             SizedBox(
                 height: MediaQuery.of(context).size.height * 0.4,
                 child: CupertinoDatePicker(
@@ -21,7 +22,7 @@ class DateTimePickerSheetCommon extends StatelessWidget {
                     onDateTimeChanged: onDateTimeChanged)),
             // Close the modal
             CupertinoButton(
-                child: Text(appFonts.ok), onPressed: () => Get.back())
+                child: Text(appFonts.ok,style: AppCss.montserratSemiBold16,), onPressed: () => Get.back())
           ])).height(MediaQuery.of(context).size.height * 0.5);
     });
   }

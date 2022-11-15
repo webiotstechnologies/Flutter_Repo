@@ -1,14 +1,14 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:chewie/chewie.dart';
 import 'package:just_audio/just_audio.dart';
 import '../config.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
-import '../routs/index.dart';
-// Audio_session
 
 class HomeController extends GetxController {
   VideoPlayerController? videoPlayerController;
-  VideoPlayerController? cameraVideoPlayerController;
+  ChewieController? chewieController;
+
   ImagePicker picker = ImagePicker();
   bool isPlaying = false;
   AudioPlayer? audioPlayer = AudioPlayer();
@@ -26,7 +26,8 @@ class HomeController extends GetxController {
   bool mPlayerIsInited = false;
   bool mRecorderIsInited = false;
   bool mPlaybackReady = false;
-
+  TimeOfDay? noonTime;
+  TimeOfDay? morningTime;
   DateTime? date;
   DateTime? time;
   DateTime? dateTime;
@@ -41,11 +42,20 @@ class HomeController extends GetxController {
   String recordingTime = '0:0';
   bool isRecording = false;
 
+  // Video Play Method
+  onVideoPlay() {
+    chewieController = ChewieController(
+        videoPlayerController: videoPlayerController!,
+        autoPlay: true,
+        looping: true);
+  }
+
   // record audio
-  getRecorderFn() {
+  getRecorderFn() { if(mPlayer != null ) {
     if (!mRecorderIsInited || !mPlayer!.isStopped) {
       return null;
     }
+  }
     return mRecorder!.isStopped ? record : stopRecorder;
   }
 
@@ -54,87 +64,44 @@ class HomeController extends GetxController {
     if (!mPlayerIsInited || !mPlaybackReady || !mRecorder!.isStopped) {
       return null;
     }
-    return mPlayer!.isStopped ? play : stopPlayer;
+    return mPlayer != null ? mPlayer!.isStopped ? play : stopPlayer : play;
   }
 
-  /* void recordTime() {
-    var startTime = DateTime.now();
-    Timer.periodic(const Duration(seconds: 1), (Timer t) {
-      var diff = DateTime.now().difference(startTime);
-
-      recordingTime =
-      '${diff.inHours < 60 ? diff.inHours : 0}:${diff.inMinutes < 60 ? diff.inMinutes : 0}:${diff.inSeconds < 60 ? diff.inSeconds : 0}';
-
-      print(recordingTime);
-
-      if (!isRecording) {
-        t.cancel(); //cancel function calling
-      }
-     update();
-    });
-    update();
-  }*/
-
-  /*record() async{
-
-    if(!isRecorderReady) return;
-      await recorder.startRecorder(toFile: '/data/user/0/thai ja');
+  // Video Play & Pause Method
+  onPlayPause() {
+    if (isPlaying == true) {
+      audioPlayer?.pause();
+      isPlaying = false;
       update();
-  }
-
-    stopRecording () async{
-
-    if(!isRecorderReady) return;
-    final path = await recorder.stopRecorder();
-    print('path: $path');
-    final audioFile = File(path!);
-    print("Recorded Audio Path: $audioFile");
-    print(File(path));
-    update();
-  }
-*/
-
-  /*// microphone recorder permission
-  recorderPermission () async{
-    final status = await Permission.microphone.request();
-    if(status != PermissionStatus.granted){
-      throw "Permission Not granted";
+    } else {
+      audioPlayer?.play();
+      isPlaying = true;
+      update();
     }
-    await recorder.openRecorder();
-    isRecorderReady = true;
-    recorder.setSubscriptionDuration(const Duration(microseconds: 500));
     update();
-  }*/
+  }
 
-  /* String formatTime (Duration duration) {
-           String towDigits (int n)=> n.toString().padLeft(2,'0');
-           final hours = towDigits(duration.inHours);
-           final minutes = towDigits(duration.inMinutes.remainder(60));
-           final seconds = towDigits(duration.inSeconds.remainder(60));
-
-           return [
-             if (duration.inHours > 0) hours,
-             minutes,
-             seconds,
-           ].join(":");
-  }*/
+  // Slider Change Method
+  onSliderChange(val) {
+    audioPlayer?.seek(Duration(seconds: val.toInt()));
+    val = val;
+    update();
+  }
 
   // Get Image from Gallery & Camera Method
   Future pickImage(source) async {
     final image = await ImagePicker().pickImage(source: source);
     if (image == null) return;
     File imageTemp = File(image.path);
-    this.image = imageTemp ;
+    this.image = imageTemp;
     pImage = image;
     update();
     var data = {
       "image": pImage,
       "source": source == ImageSource.gallery ? "Gallery" : "Camera",
     };
-
-   Get.back();
-    Get.toNamed(routeName.imageScreen,
-        arguments: data);
+    Get.back();
+    Get.toNamed(routeName.imageScreen, arguments: data);
   }
 
   // Get Video From Gallery & Camera
@@ -143,29 +110,16 @@ class HomeController extends GetxController {
     video = File(pickedFile!.path);
     videoPlayerController = VideoPlayerController.file(video!)
       ..initialize().then((_) {
-        videoPlayerController!.play();
+        onVideoPlay();
         update();
         var data = {
-          "video": video,
-          "controller": videoPlayerController,
+          "controller": chewieController,
           "source": source == ImageSource.gallery ? "Gallery" : "Camera"
         };
         Get.back();
-        Get.toNamed(routeName.videoScreen,arguments: data);
+        Get.toNamed(routeName.videoScreen, arguments: data);
       });
   }
-
-  /*// Get Video From Gallery & Camera
-  Future pickVideoCamera() async {
-    XFile? pickedFile = await picker.pickVideo(source: ImageSource.camera);
-    camera = File(pickedFile!.path);
-    cameraVideoPlayerController = VideoPlayerController.file(camera!)
-      ..initialize().then((_) {
-        cameraVideoPlayerController!.play();
-        update();
-        Get.back();
-      });
-  }*/
 
   // play audio from storage
   playAudioFromLocalStorage() async {
@@ -193,6 +147,7 @@ class HomeController extends GetxController {
   // date time change method
   onDateTimeChange(val) {
     dateTime = val;
+    morningTime = TimeOfDay(hour: dateTime!.hour, minute: dateTime!.minute);
     update();
   }
 
@@ -204,7 +159,9 @@ class HomeController extends GetxController {
 
   // time change method
   onTimeChange(val) {
+    print(val);
     time = val;
+    noonTime = TimeOfDay(hour: time!.hour, minute: time!.minute);
     update();
   }
 
@@ -280,24 +237,16 @@ class HomeController extends GetxController {
       update();
     });
 
-    /* audioPlayer?.playerStateStream.listen((state) {
-    });*/
-
-    /* songDuration = playing!.audio.duration.toString().split(".")[0];
-      songDurationInSeconds = playing.audio.duration.inSeconds.toDouble();*/
+    // Song Duration
     audioPlayer?.positionStream.listen((playing) {
       songDuration = playing.toString().split(".")[0];
       songDurationInSeconds = playing.inSeconds.toDouble();
-      /*print("songDuration: $songDuration");
-       print("songDurationSecond: $songDurationInSeconds");*/
       update();
     });
-
+     // Song Position
     audioPlayer?.durationStream.listen((duration) {
       currentPosition = duration.toString().split(".")[0];
       currentPositionInSeconds = duration!.inSeconds.toDouble();
-      /*print("songPosition: $currentPosition");
-      print("songPositionSecond: $currentPositionInSeconds");*/
       update();
     });
     update();
@@ -309,11 +258,31 @@ class HomeController extends GetxController {
   void onClose() {
     mPlayer!.closePlayer();
     mPlayer = null;
+    file = null;
     mRecorder!.closeRecorder();
     mRecorder = null;
-    videoPlayerController!.dispose();
-    cameraVideoPlayerController!.dispose();
+    audioPlayer?.dispose();
+    audioPlayer?.stop();
+    chewieController?.dispose();
+    videoPlayerController?.dispose();
+
     // TODO: implement onClose
     super.onClose();
+  }
+
+  @override
+  void dispose() {
+    chewieController?.dispose();
+    videoPlayerController?.dispose();
+    file = null;
+    audioPlayer?.dispose();
+    audioPlayer?.stop();
+
+    mPlayer!.closePlayer();
+    mPlayer = null;
+    mRecorder!.closeRecorder();
+    mRecorder = null;
+    // TODO: implement dispose
+    super.dispose();
   }
 }
