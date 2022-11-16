@@ -13,6 +13,6 @@ class ElevatedButtonCommon extends StatelessWidget {
             backgroundColor: appCtrl.appTheme.indigo),
         onPressed: onPressed,
         child: Text(title!,
-            style: AppCss.montserratSemiBold14));
+            style: AppCss.montserratSemiBold12));
   }
 }

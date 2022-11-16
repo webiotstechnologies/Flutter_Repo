@@ -51,11 +51,10 @@ class HomeController extends GetxController {
   }
 
   // record audio
-  getRecorderFn() { if(mPlayer != null ) {
+  getRecorderFn() {
     if (!mRecorderIsInited || !mPlayer!.isStopped) {
       return null;
     }
-  }
     return mRecorder!.isStopped ? record : stopRecorder;
   }
 
@@ -64,7 +63,11 @@ class HomeController extends GetxController {
     if (!mPlayerIsInited || !mPlaybackReady || !mRecorder!.isStopped) {
       return null;
     }
-    return mPlayer != null ? mPlayer!.isStopped ? play : stopPlayer : play;
+    return mPlayer != null
+        ? mPlayer!.isStopped
+            ? play
+            : stopPlayer
+        : play;
   }
 
   // Video Play & Pause Method
@@ -159,7 +162,6 @@ class HomeController extends GetxController {
 
   // time change method
   onTimeChange(val) {
-    print(val);
     time = val;
     noonTime = TimeOfDay(hour: time!.hour, minute: time!.minute);
     update();
@@ -195,7 +197,6 @@ class HomeController extends GetxController {
   // stop recording method
   void stopRecorder() async {
     await mRecorder!.stopRecorder().then((value) {
-      //var url = value;
       mPlaybackReady = true;
       update();
     });
@@ -243,7 +244,7 @@ class HomeController extends GetxController {
       songDurationInSeconds = playing.inSeconds.toDouble();
       update();
     });
-     // Song Position
+    // Song Position
     audioPlayer?.durationStream.listen((duration) {
       currentPosition = duration.toString().split(".")[0];
       currentPositionInSeconds = duration!.inSeconds.toDouble();
@@ -256,16 +257,8 @@ class HomeController extends GetxController {
 
   @override
   void onClose() {
-    mPlayer!.closePlayer();
-    mPlayer = null;
-    file = null;
-    mRecorder!.closeRecorder();
-    mRecorder = null;
-    audioPlayer?.dispose();
-    audioPlayer?.stop();
-    chewieController?.dispose();
     videoPlayerController?.dispose();
-
+    chewieController?.dispose();
     // TODO: implement onClose
     super.onClose();
   }
@@ -274,14 +267,8 @@ class HomeController extends GetxController {
   void dispose() {
     chewieController?.dispose();
     videoPlayerController?.dispose();
-    file = null;
     audioPlayer?.dispose();
     audioPlayer?.stop();
-
-    mPlayer!.closePlayer();
-    mPlayer = null;
-    mRecorder!.closeRecorder();
-    mRecorder = null;
     // TODO: implement dispose
     super.dispose();
   }

@@ -18,6 +18,7 @@ class VideoScreen extends StatelessWidget {
         },
         child: Scaffold(
             appBar: AppBar(
+              centerTitle: true,
                 backgroundColor: appCtrl.appTheme.indigo,
                 title: Text("Video From ${videoCtrl.title}")),
             body:  Center(

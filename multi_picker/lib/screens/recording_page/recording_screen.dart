@@ -1,19 +1,35 @@
 import '../../config.dart';
 
-class RecordingScreen extends StatelessWidget {
+class RecordingScreen extends StatefulWidget {
   const RecordingScreen({Key? key}) : super(key: key);
+
+  @override
+  State<RecordingScreen> createState() => _RecordingScreenState();
+}
+
+class _RecordingScreenState extends State<RecordingScreen> {
+  final homeCtrl = Get.find<HomeController>();
+  @override
+  void initState() {
+    // TODO: implement initState
+  //  homeCtrl.mPlayer = FlutterSoundPlayer();
+    if(homeCtrl.mPlayer!=null) {
+      homeCtrl.mPlayer!.openPlayer().then((value) {
+        homeCtrl.mPlayerIsInited = true;
+        homeCtrl.update();
+      });
+    }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(builder: (homeCtrl) {
       return WillPopScope(
         onWillPop: ()async{
-          homeCtrl.mPlayer!.closePlayer();
-          homeCtrl.mPlayer = null;
-          homeCtrl.file = null;
-          homeCtrl.mRecorder!.closeRecorder();
-          homeCtrl.audioPlayer?.dispose();
-          homeCtrl.audioPlayer?.stop();
+          homeCtrl.stopPlayer();
+          homeCtrl.stopRecorder();
+          homeCtrl.stopAudio();
           return true;
         },
         child: Scaffold(
@@ -24,10 +40,10 @@ class RecordingScreen extends StatelessWidget {
             body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
               // Recording Button
               RecordingButton(
-                      title: homeCtrl.mRecorder!.isRecording
+                      title: homeCtrl.mRecorder != null ? homeCtrl.mRecorder!.isRecording
                           ? appFonts.recordingInProgress
-                          : appFonts.recorderIsStopped,
-                      eTitle: homeCtrl.mRecorder!.isRecording
+                          : appFonts.recorderIsStopped : "Play",
+                      eTitle:homeCtrl.mRecorder!.isRecording
                           ? appFonts.stop
                           : appFonts.record,
                       onPressed: homeCtrl.getRecorderFn())
@@ -38,7 +54,7 @@ class RecordingScreen extends StatelessWidget {
                       ? appFonts.playbackInProgress
                       : appFonts.playerIsStopped : "No Audio Found",
                   eTitle:
-                  homeCtrl.mPlayer != null ?  homeCtrl.mPlayer!.isPlaying ? appFonts.stop : appFonts.play : "Play",
+                  homeCtrl.mPlayer!.isPlaying ? appFonts.stop : appFonts.play,
                   onPressed: homeCtrl.getPlaybackFn())
             ])),
       );
