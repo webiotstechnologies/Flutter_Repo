@@ -1,51 +1,56 @@
 import 'dart:convert';
-
 import 'package:flutter/services.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import '../config.dart';
-import '../routes/index.dart';
-
-
 
 class HomeController extends GetxController {
-  String? scanBarcode;
+  String scanBarcode = "No data found !";
+
+  TextEditingController barCodeController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController numberController = TextEditingController();
   dynamic encodedJson;
 
-
-
+  // Qr Code Generate Data Method
   generateQrCode() {
     Map<String, dynamic> myData = {
       'name': nameController.text,
-      'number': numberController.text,
       'email': emailController.text,
+      'number': numberController.text
     };
     encodedJson = jsonEncode(myData);
     update();
   }
 
-
-
+  // Scan Qr / Barcode Method
   Future<void> scanBarcodeNormal() async {
-      scanBarcode = await FlutterBarcodeScanner.scanBarcode(
-          '#ff6666', 'Cancel', true, ScanMode.DEFAULT);
+    String barcodeScanRes;
+    try {
+      barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+          '#ff6666', appFonts.cancel, true, ScanMode.DEFAULT);
+    } on PlatformException {
+      barcodeScanRes = appFonts.failedTo;
+    }
+    scanBarcode = barcodeScanRes;
     update();
   }
 
-  onQrGenerate() {
-    generateQrCode();
-    update();
-    var data = {"json": encodedJson};
-    Get.toNamed(routeName.qrScreen, arguments: data);
+  //  After Scan Result Dialog Box
+  showDialogBox() {
+    showDialog(
+        context: Get.context!,
+        builder: (BuildContext context) {
+          return AlertDialog(
+              title: Text(appFonts.scanResult),
+              content: Text(
+                  scanBarcode == "-1" ? appFonts.dataNotFound : scanBarcode),
+              actions: [
+                TextButton(
+                    onPressed: () => Get.back(),
+                    child: Text(appFonts.ok,
+                        style: AppCss.montserratSemiBold16
+                            .textColor(appCtrl.appTheme.indigo)))
+              ]);
+        });
   }
-
-  onBarcodeGenerate() {
-    generateQrCode();
-    update();
-    var data = {"json": encodedJson};
-    Get.toNamed(routeName.barcodeScreen, arguments: data);
-  }
-
 }
