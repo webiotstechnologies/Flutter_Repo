@@ -1,0 +1,40 @@
+final dynamic hi = {
+
+  'multiFeature': "मल्टीफीचर",
+  'buy': "खरीदें",
+  'size': "आकार: ",
+  'english': "अंग्रेजी",
+  'hindi': "हिंदी",
+  'gujarati': "गुजराती",
+
+  'french': "फ्रेंच",
+  'spanish': "स्पेनिश",
+  "arabic": "अरबी",
+  "german": "जर्मन",
+  "japanese": "जापानी",
+  "koran": "कोरियाई",
+  "russian": "रूसी",
+
+  "rupee":   "भारतीय रुपया",
+  "dollar":  "संयुक्त राज्य डॉलर",
+  "yen":     "जापान येन",
+  "euro":    "जर्मनी यूरो",
+  "pound":   "यूनाइटेड किंगडम पाउंड",
+  "won":     "दक्षिण कोरियाई जीता",
+  "dinar":   "कुवैत दिनार",
+
+  "rtl": "आरटीएल",
+  "selectLang": "भाषा चुनें",
+  'outfitIsAwesome': "आउटफिट बहुत बढ़िया है इसे आज़माएं!",
+  'blackDenimJeans': "ब्लैक डेनिम जींस",
+  'blackCottonJeans': "ब्लैक कॉटन जीन्स",
+  'pinkTShirt': "गुलाबी सूती टी-शर्ट",
+  'yellowFormalKurti': "येलो फॉर्मल कुर्ती",
+  'yellowKolhapuriKurti': "पीली कोल्हापुरी कुर्ती",
+  'yellowFormalKurta': "पीला औपचारिक कुर्ता",
+  'yellowKolhapuriKurta': "पीला कोल्हापुरी कुर्ता",
+  'whiteFormalShirtMen': "सफ़ेद औपचारिक कमीज़",
+  'whiteSilkShirtMen': "सफ़ेद रेशम की कमीज़",
+  'whiteCottonShirtGirl': "सफ़ेद सूती कमीज़",
+
+};
