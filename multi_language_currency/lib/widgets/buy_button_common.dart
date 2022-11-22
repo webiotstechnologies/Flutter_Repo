@@ -15,9 +15,13 @@ class PriceBuyCommon extends StatelessWidget {
           width: Sizes.s190,
           child:
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            Text(title!,
-                style: AppCss.montserratSemiBold16
-                    .textColor(appCtrl.appTheme.indigo)),
+            SizedBox(
+              width: Sizes.s70,
+              child: Text(title!,
+                  overflow: TextOverflow.ellipsis,
+                  style: AppCss.montserratSemiBold16
+                      .textColor(appCtrl.appTheme.indigo)),
+            ),
             Text(appFonts.buy.tr,
                     textAlign: TextAlign.center,
                     style: AppCss.montserratSemiBold14

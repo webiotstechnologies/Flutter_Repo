@@ -23,6 +23,20 @@ class AppFonts {
    final won = "won";
    final dinar = "dinar";
 
+   final description = "description";
+   final rating = "rating";
+   final productDetail = "productDetail";
+   final addToCart = "addToCart";
+   final pDescription = "pDescription";
+   final pDescription2 = "pDescription2";
+   final pDescription3 = "pDescription3";
+   final pDescription4 = "pDescription4";
+   final pDescription5 = "pDescription5";
+
+   final s = "s";
+   final m = "m";
+   final l = "l";
+   final xl = "xl";
 
    final outfitIsAwesome = "outfitIsAwesome";
    final blackDenimJeans = "blackDenimJeans";

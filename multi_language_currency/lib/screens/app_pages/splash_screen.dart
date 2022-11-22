@@ -1,4 +1,3 @@
-
 import '../../config.dart';
 
 
@@ -10,6 +9,7 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<SplashController>(builder: (splashCtrl) {
+      // Splash Image
       return Scaffold(
           backgroundColor: appCtrl.appTheme.blue200,
           body: Center(child: Image.asset(eImageAssets.splash, scale: 10)));

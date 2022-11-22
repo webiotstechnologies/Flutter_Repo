@@ -1,11 +1,11 @@
 import '../config.dart';
 
 class AppArray {
-
   // Currency List
   var currencyList = [
     {
       'title': appFonts.rupee,
+      'image': eImageAssets.rupee,
       'code': 'INR',
       'symbol': '₹',
       'USD': 0.013,
@@ -18,6 +18,7 @@ class AppArray {
     },
     {
       'title': appFonts.dollar,
+      'image': eImageAssets.dollar,
       'code': 'USD',
       'symbol': '\$',
       'USD': 1,
@@ -30,6 +31,7 @@ class AppArray {
     },
     {
       'title': appFonts.yen,
+      'image': eImageAssets.yen,
       'code': 'YEN',
       'symbol': '¥',
       'USD': 0.0069,
@@ -39,10 +41,10 @@ class AppArray {
       'POU': 0.0060,
       'DIN': 0.0022,
       'EUR': 0.0069,
-
     },
     {
       'title': appFonts.won,
+      'image': eImageAssets.won,
       'code': 'WON',
       'symbol': '₩',
       'USD': 0.00074,
@@ -55,6 +57,7 @@ class AppArray {
     },
     {
       'title': appFonts.pound,
+      'image': eImageAssets.pound,
       'code': 'POU',
       'symbol': '£',
       'USD': 1.18,
@@ -67,6 +70,7 @@ class AppArray {
     },
     {
       'title': appFonts.dinar,
+      'image': eImageAssets.dinar,
       'code': 'DIN',
       'symbol': 'د.ك',
       'USD': 3.25,
@@ -79,6 +83,7 @@ class AppArray {
     },
     {
       'title': appFonts.euro,
+      'image': eImageAssets.euro,
       'code': 'EUR',
       'symbol': '€',
       'USD': 1.03,
@@ -98,72 +103,71 @@ class AppArray {
       "title": appFonts.blackDenimJeans,
       "price": 160,
       "size": "M",
-      "color": "black",
-      },
+      "description": appFonts.pDescription,
+    },
     {
       "image": eImageAssets.blackJeansBoy2,
       "title": appFonts.blackCottonJeans,
       "price": 58,
       "size": "M",
-      "color": "black",
-      },
+      "description": appFonts.pDescription
+    },
     {
       "image": eImageAssets.pinkTShirtBoy,
       "title": appFonts.pinkTShirt,
       "price": 30,
       "size": "M",
-      "color": "pink",
-      },
+      "description": appFonts.pDescription2,
+    },
     {
       "image": eImageAssets.whiteShirtBoy,
       "title": appFonts.whiteSilkShirtMen,
       "price": 20,
       "size": "XL",
-      "color": "white",
-     },
+      "description": appFonts.pDescription3
+    },
     {
       "image": eImageAssets.whiteShirtBoy2,
       "title": appFonts.whiteFormalShirtMen,
       "price": 65,
       "size": "M",
-      "color": "white",
-      },
+      "description": appFonts.pDescription3
+    },
     {
       "image": eImageAssets.whiteShirtGirl,
       "title": appFonts.whiteCottonShirtGirl,
       "price": 29,
       "size": "M",
-      "color": "white",
-      },
+      "description": appFonts.pDescription3
+    },
     {
       "image": eImageAssets.yellowKurtiGirl,
       "title": appFonts.yellowKolhapuriKurti,
       "price": 51,
       "size": "L",
-      "color": "yellow",
-     },
+      "description": appFonts.pDescription4
+    },
     {
       "image": eImageAssets.yellowKurtiGirl2,
       "title": appFonts.yellowFormalKurti,
       "price": 176,
       "size": "S",
-      "color": "yellow",
-     },
+      "description": appFonts.pDescription4
+    },
     {
       "image": eImageAssets.yellowKurtaBoy,
       "title": appFonts.yellowFormalKurta,
       "price": 76,
       "size": "M",
-      "color": "yellow",
-       },
+      "description": appFonts.pDescription5
+    },
     {
       "image": eImageAssets.yellowKurtaBoy2,
       "title": appFonts.yellowKolhapuriKurta,
       "price": 88,
       "size": "S",
-      "color": "yellow",
-       },
-
+      "description": appFonts.pDescription5
+    },
   ];
 
   // Languages List

@@ -138,6 +138,7 @@ class Sizes {
   static const double s90 = 90 * scale;
   static const double s96 = 96 * scale;
   static const double s100 = 100 * scale;
+  static const double s110 = 110 * scale;
   static const double s120 = 120 * scale;
   static const double s130 = 130 * scale;
   static const double s140 = 140 * scale;
@@ -147,6 +148,7 @@ class Sizes {
   static const double s180 = 180 * scale;
   static const double s190 = 190 * scale;
   static const double s200 = 200 * scale;
+  static const double s250 = 250 * scale;
   static const double s270 = 270 * scale;
   static const double s300 = 300 * scale;
 }

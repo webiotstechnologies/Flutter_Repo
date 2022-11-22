@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:multi_language_currency/common/extension/text_style_extensions.dart';
+import 'package:multi_language_currency/config.dart';
 part 'scale.dart';
 
 class AppCss {

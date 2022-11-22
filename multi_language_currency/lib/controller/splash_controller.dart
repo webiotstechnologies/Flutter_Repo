@@ -37,13 +37,13 @@ class SplashController extends GetxController {
 
       // Currency Save
       var currency = appCtrl.storage.read("currency")  ?? appArray.currencyList[0];
+      var currencyCode = appCtrl.storage.read("currencyCode")  ?? appArray.currencyList[0];
       appCtrl.priceSymbol  = currency["symbol"];
-      appCtrl.currencyVal = double.parse(currency["INR"].toString());
+      appCtrl.currencyVal = double.parse(currencyCode[currency["code"]].toString());
 
       // RTL Save
      bool isRtlSave = appCtrl.storage.read("isRtl") ?? false;
         appCtrl.isRTL = isRtlSave;
-
       Get.updateLocale(locale);
       appCtrl.update();
       Get.forceAppUpdate();

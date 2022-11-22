@@ -51,7 +51,7 @@ class ProductLists extends StatelessWidget {
                           .toStringAsFixed(2))
             ])
       ])
-    ]))
+    ])).inkWell(onTap: ()=> Get.toNamed(routeName.productScreen,arguments: data))
         .decorated(
             color: appCtrl.appTheme.whiteColor,
             boxShadow: [

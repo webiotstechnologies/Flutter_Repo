@@ -8,6 +8,7 @@ class ImageCommon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Product Image
     return ClipRRect(
         borderRadius:
         const BorderRadius.all(Radius.circular(AppRadius.r20)),

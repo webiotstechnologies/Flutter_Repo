@@ -1,8 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
-import '../../controller/app_controller.dart';
-import 'app_theme.dart';
+import '../../config.dart';
+
 
 class ThemeService {
   var appCtrl = Get.isRegistered<AppController>()

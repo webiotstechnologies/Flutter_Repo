@@ -38,6 +38,15 @@ export 'package:multi_language_currency/common/language/en.dart';
 export 'package:multi_language_currency/common/language/hi.dart';
 export 'package:multi_language_currency/common/language/ja.dart';
 export 'package:multi_language_currency/common/language/ko.dart';
+export '../../controller/product_controller.dart';
+export '../../widgets/bottom_layout.dart';
+export '../../widgets/notification_common.dart';
+export '../../widgets/product_detail_common.dart';
+export 'package:multi_language_currency/widgets/plus_minus_button_common.dart';
+export 'package:multi_language_currency/widgets/button_common.dart';
+export 'package:multi_language_currency/common/extension/text_style_extensions.dart';
+export 'package:google_fonts/google_fonts.dart';
+export '../../controller/app_controller.dart';
 
 
 final appCtrl = Get.isRegistered<AppController>()

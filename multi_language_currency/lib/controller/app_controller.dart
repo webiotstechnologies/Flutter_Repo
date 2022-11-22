@@ -1,4 +1,3 @@
-import '../common/assets/index.dart';
 import '../config.dart';
 
 class AppController extends GetxController {
@@ -16,16 +15,5 @@ class AppController extends GetxController {
     Get.forceAppUpdate();
   }
 
-  @override
-  void onReady() {
-    // TODO: implement onReady
-    var currency = storage.read("currency") ?? appArray.currencyList[0];
-    appCtrl.priceSymbol  = currency['symbol'].toString();
-    languageVal = storage.read("locale") ?? "en";
-    update();
-    Get.forceAppUpdate();
-
-    super.onReady();
-  }
 
 }

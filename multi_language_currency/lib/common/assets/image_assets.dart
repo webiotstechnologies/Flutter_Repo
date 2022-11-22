@@ -29,4 +29,12 @@ class ImageAssets {
   final String uae = "assets/images/uae.png";
   final String usa = "assets/images/usa.png";
 
+  final String dollar = "assets/images/usd.png";
+  final String yen = "assets/images/yen.png";
+  final String won = "assets/images/won.png";
+  final String rupee = "assets/images/rupee.png";
+  final String pound = "assets/images/pound.png";
+  final String euro = "assets/images/euro.png";
+  final String dinar = "assets/images/dinar.png";
+
 }

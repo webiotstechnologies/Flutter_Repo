@@ -16,21 +16,25 @@ class LanguageButton extends StatelessWidget {
                 builder: (BuildContext context) {
                   return DirectionalRtl(
                       child: AlertDialog(
-                          title: Text(appFonts.selectLang.tr),
+                          title: Text(appFonts.selectLang.tr,
+                              style: AppCss.montserratSemiBold18),
                           content: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisSize: MainAxisSize.min,
                               children: homeCtrl.languageLists
                                   .asMap()
                                   .entries
-                                  .map((e) => Row(
-                                    children: [
-                                      Image.asset(e.value['image'],scale: 13),
-                                      Text(
-                                          e.value["language"].toString().tr,
-                                          style:
-                                          AppCss.montserratSemiBold16)
-                                          .inkWell(onTap: () async {
+                                  .map((e) => Row(children: [
+                                        Image.asset(e.value['image'],
+                                            scale: 15),
+                                        Text(e.value["language"].toString().tr,
+                                                style:
+                                                    AppCss.montserratMedium16)
+                                            .paddingOnly(
+                                                top: Insets.i15,
+                                                left: Insets.i20)
+                                            .paddingOnly(bottom: Insets.i15)
+                                      ]).inkWell(onTap: () async {
                                         if (e.value["code"] == "en") {
                                           appCtrl.languageVal = "en";
                                         } else if (e.value["code"] == "hi") {
@@ -58,9 +62,7 @@ class LanguageButton extends StatelessWidget {
                                             .write("locale", e.value["code"]);
                                         Get.forceAppUpdate();
                                         Get.back();
-                                      }).paddingOnly(bottom: Insets.i15)
-                                    ],
-                                  ))
+                                      }))
                                   .toList())));
                 });
           },
