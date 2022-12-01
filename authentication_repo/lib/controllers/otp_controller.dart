@@ -13,7 +13,7 @@ class OtpController extends GetxController {
     isLoading = false;
     update();
   }
-
+  
   onLoadingTrue() {
     isLoading = true;
     update();
